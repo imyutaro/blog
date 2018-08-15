@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Hugo&#43;GitHub Pagesでblog作成</title>
+	<meta name="description" content="">
+	<meta name="generator" content="Hugo 0.46" />
+	<meta property="og:title" content="Hugo&#43;GitHub Pagesでblog作成" />
+<meta property="og:description" content="Blogをはじめた 自分が勉強していることをoutputとしてblogにまとめることにした．このblogはHugoというGoで作られた静的サイ" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://imyutaro.github.io/blog/blog/firstpost/" />
+
+
+
+<meta property="article:published_time" content="2018-08-10T21:16:24&#43;09:00"/>
+
+<meta property="article:modified_time" content="2018-08-10T21:16:24&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
+
+	<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Hugo&#43;GitHub Pagesでblog作成"/>
+<meta name="twitter:description" content="Blogをはじめた 自分が勉強していることをoutputとしてblogにまとめることにした．このblogはHugoというGoで作られた静的サイ"/>
+
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="https://imyutaro.github.io/blog/css/style.css">
+	<script type="text/javascript" src="https://imyutaro.github.io/blog/js/scripts.js"></script>
+	<link rel="shortcut icon" href="https://imyutaro.github.io/blog/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container-outer">
+		<header class="header">
+			<div class="container container-inner">
+				<div class="logo" role="banner">
+					<a class="logo__link" href="https://imyutaro.github.io/blog/" title="あうとぷっと" rel="home">
+						<div class="logo__title">あうとぷっと</div>
+						
+					</a>
+				</div>
+			</div>
+			<div class="divider"></div>
+		</header>
+		<div class="wrapper flex">
+
+
+<main class="main content">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Hugo&#43;GitHub Pagesでblog作成</h1><div class="post__meta meta">
+<svg class="icon icon-time" width="16" height="14" viewBox="0 0 16 16"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+<time class="post__meta-date meta-date" datetime="2018-08-10T21:16:24">August 10, 2018</time>
+<span class="post__meta-categories meta-categories">
+	<svg class="icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta-categories__list"><a class="meta-categories__link" href="https://imyutaro.github.io/blog/categories/blog" rel="category">BLOG</a></span>
+</span>
+  　~ 5 minute read ~
+</div>
+		</header>
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#blogをはじめた">Blogをはじめた</a></li>
+<li><a href="#hugoについて">Hugoについて</a>
+<ul>
+<li><a href="#数式を表示">数式を表示</a></li>
+<li><a href="#式番号の表示">式番号の表示</a></li>
+<li><a href="#syntax-highlightの設定">syntax highlightの設定</a></li>
+<li><a href="#reading-timeについて">Reading timeについて</a></li>
+</ul></li>
+<li><a href="#disqusの導入">Disqusの導入</a></li>
+<li><a href="#github-pagesの設定">GitHub Pagesの設定</a></li>
+<li><a href="#references">references</a></li>
+</ul></li>
+</ul>
+</nav>
+	</div>
+</div>
+<div class="post__content clearfix">
+			
+
+<h2 id="blogをはじめた">Blogをはじめた</h2>
+
+<p>自分が勉強していることをoutputとしてblogにまとめることにした．このblogは<a href="https://gohugo.io/">Hugo</a>というGoで作られた静的サイトジェネレータを使って作成した．</p>
+
+<h2 id="hugoについて">Hugoについて</h2>
+
+<p>HugoはGo製で速いらしい．最初，<a href="https://jekyllrb.com/">Jekyll</a>というRuby製の静的サイトジェネレータを利用しようと思ったが記事数が多くなると重くなるというのを見てHugoにした．また，HugoもJekyllも記事をmarkdownで書けるのでとても楽．数式も設定すれば書けるので便利．</p>
+
+<p>Giraffe AcademyというYouTubeチャンネルの解説がわかりやすくそれを参考に作成した．</p>
+
+<p><iframe width="640" height="385" src="https://www.youtube.com/embed/qtIqKaDlqXo?list=PLLAZ4kZ9dFpOnyRlyS-liKL5ReHDcj4G3" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen frameborder="0"></iframe>
+<a href="https://www.youtube.com/watch?v=qtIqKaDlqXo&amp;list=PLLAZ4kZ9dFpOnyRlyS-liKL5ReHDcj4G3">Giraffe AcademyのHugo解説 playlist</a></p>
+
+<p>テーマは<a href="https://themes.gohugo.io/mainroad/">mainroad</a>を利用している．</p>
+
+<h3 id="数式を表示">数式を表示</h3>
+
+<p>また，数式を書くために以下のサイトを参考に数式表示できるようにした．<br />
+<a href="http://iimuz.github.io/post/2016/11/hugotex/">Hugoで数式を導入します | しさく</a> <br />
+<code>layout/partials/mathjax_support.html</code>というファイルを作って以下のコードを書いて数式をレンダリングできるようにした．</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html:mathjax_support.html" data-lang="html:mathjax_support.html"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span style="color:#60a0b0;font-style:italic">&lt;!-- tex --&gt;</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span>&lt;<span style="color:#062873;font-weight:bold">script</span> <span style="color:#4070a0">type</span><span style="color:#666">=</span><span style="color:#4070a0">&#34;text/x-mathjax-config&#34;</span>&gt;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span>  MathJax.Hub.Config({
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span>      tex2jax<span style="color:#666">:</span> { inlineMath<span style="color:#666">:</span> [[<span style="color:#4070a0">&#39;$&#39;</span>,<span style="color:#4070a0">&#39;$&#39;</span>], [<span style="color:#4070a0">&#34;\\(&#34;</span>,<span style="color:#4070a0">&#34;\\)&#34;</span>]] }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span>  });
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span>&lt;/<span style="color:#062873;font-weight:bold">script</span>&gt;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span>&lt;<span style="color:#062873;font-weight:bold">script</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span>    <span style="color:#4070a0">type</span><span style="color:#666">=</span><span style="color:#4070a0">&#34;text/javascript&#34;</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span>    <span style="color:#4070a0">src</span><span style="color:#666">=</span><span style="color:#4070a0">&#34;https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&#34;</span> /&gt;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span>&lt;/<span style="color:#062873;font-weight:bold">script</span>&gt;</code></pre></div>
+<p>数式表示は例えばこんな感じ
+$$
+\sum_{i=0}^N v_i
+$$</p>
+
+<p>上記の設定のみだと<code>\sum</code>が2回続くつまり，<code>\sum_{a=0}^A \sum_{b=0}^B</code>としたりしたらうまく表示できない．これは，<code>\prod</code>や <code>\int</code>などでも起こる． <br />
+<code>\sum_{}</code>の<code>_</code>(アンダースコア)の前に<code>\</code>(バックスラッシュ又は<code>¥</code>)を入れれば表示される．<br />
+<a href="https://divadnojnarg.github.io/blog/mathjax/">Setting MathJax with Hugo | Hi, I am David</a></p>
+
+<h3 id="式番号の表示">式番号の表示</h3>
+
+<p>式番号を自動で入れる場合には以下を<code>layouts/partials/mathjax_support.html</code>に書く．</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>MathJax.Hub.Config({
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span>  // Autonumbering by mathjax
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span>  TeX: { equationNumbers: { autoNumber: &#34;AMS&#34; } }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span>});</code></pre></div>
+<p>そして<code>layouts/partials/footer.html</code>に以下を書く．</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>{{- partial &#34;mathjax_support.html&#34; . -}}</code></pre></div>
+<p>書いたあとの<code>layouts/partials/mathjax_support.html</code>．</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html:mathjax_support.html" data-lang="html:mathjax_support.html"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span>{{ if and .IsPage (eq (.Param &#34;mathjax&#34;) true) }}
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span>&lt;<span style="color:#062873;font-weight:bold">script</span> <span style="color:#4070a0">type</span><span style="color:#666">=</span><span style="color:#4070a0">&#34;text/x-mathjax-config&#34;</span>&gt;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span>MathJax.Hub.Config({
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span>  tex2jax<span style="color:#666">:</span> {
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span>    inlineMath<span style="color:#666">:</span> [[<span style="color:#4070a0">&#39;$&#39;</span>,<span style="color:#4070a0">&#39;$&#39;</span>], [<span style="color:#4070a0">&#39;\\(&#39;</span>,<span style="color:#4070a0">&#39;\\)&#39;</span>]],
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span>    displayMath<span style="color:#666">:</span> [[<span style="color:#4070a0">&#39;$$&#39;</span>,<span style="color:#4070a0">&#39;$$&#39;</span>], [<span style="color:#4070a0">&#39;\[&#39;</span>,<span style="color:#4070a0">&#39;\]&#39;</span>]],
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span>    processEscapes<span style="color:#666">:</span> <span style="color:#007020;font-weight:bold">true</span>,
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span>    processEnvironments<span style="color:#666">:</span> <span style="color:#007020;font-weight:bold">true</span>,
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span>    skipTags<span style="color:#666">:</span> [<span style="color:#4070a0">&#39;script&#39;</span>, <span style="color:#4070a0">&#39;noscript&#39;</span>, <span style="color:#4070a0">&#39;style&#39;</span>, <span style="color:#4070a0">&#39;textarea&#39;</span>, <span style="color:#4070a0">&#39;pre&#39;</span>,<span style="color:#4070a0">&#39;code&#39;</span>],
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span>    TeX<span style="color:#666">:</span> { equationNumbers<span style="color:#666">:</span> { autoNumber<span style="color:#666">:</span> <span style="color:#4070a0">&#34;AMS&#34;</span> },
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span>         extensions<span style="color:#666">:</span> [<span style="color:#4070a0">&#34;AMSmath.js&#34;</span>, <span style="color:#4070a0">&#34;AMSsymbols.js&#34;</span>] }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span>  }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span>});
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span>MathJax.Hub.Config({
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span>  <span style="color:#60a0b0;font-style:italic">// Autonumbering by mathjax
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span style="color:#60a0b0;font-style:italic"></span>  TeX<span style="color:#666">:</span> { equationNumbers<span style="color:#666">:</span> { autoNumber<span style="color:#666">:</span> <span style="color:#4070a0">&#34;AMS&#34;</span> } }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span>});
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span>&lt;/<span style="color:#062873;font-weight:bold">script</span>&gt;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span>{{ end }}</code></pre></div>
+<p>書いたあとの<code>layouts/partials/footer.html</code>．</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html:footer.html" data-lang="html:footer.html"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span>&lt;/<span style="color:#062873;font-weight:bold">div</span>&gt;<span style="color:#60a0b0;font-style:italic">&lt;!-- .wrapper --&gt;</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span>  &lt;<span style="color:#062873;font-weight:bold">footer</span> <span style="color:#4070a0">class</span><span style="color:#666">=</span><span style="color:#4070a0">&#34;footer&#34;</span>&gt;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span>    &lt;<span style="color:#062873;font-weight:bold">div</span> <span style="color:#4070a0">class</span><span style="color:#666">=</span><span style="color:#4070a0">&#34;container container-inner&#34;</span>&gt;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span>      &lt;<span style="color:#062873;font-weight:bold">div</span> <span style="color:#4070a0">class</span><span style="color:#666">=</span><span style="color:#4070a0">&#34;footer__copyright&#34;</span>&gt;<span style="color:#d55537;font-weight:bold">&amp;copy;</span> {{ now.Format &#34;2006&#34; }} {{ .Site.Title }}. &lt;<span style="color:#062873;font-weight:bold">span</span> <span style="color:#4070a0">class</span><span style="color:#666">=</span><span style="color:#4070a0">&#34;footer__copyright-credits&#34;</span>&gt;{{ T &#34;footer_credits&#34; | safeHTML }}&lt;/<span style="color:#062873;font-weight:bold">span</span>&gt;&lt;/<span style="color:#062873;font-weight:bold">div</span>&gt;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span>    &lt;/<span style="color:#062873;font-weight:bold">div</span>&gt;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span>  &lt;/<span style="color:#062873;font-weight:bold">footer</span>&gt;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span>&lt;/<span style="color:#062873;font-weight:bold">div</span>&gt;<span style="color:#60a0b0;font-style:italic">&lt;!-- .container-outer --&gt;</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span>&lt;<span style="color:#062873;font-weight:bold">script</span>&gt;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span style="color:#007020;font-weight:bold">var</span> navigation <span style="color:#666">=</span> responsiveNav(<span style="color:#4070a0">&#34;.menu&#34;</span>, {
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span>  navClass<span style="color:#666">:</span> <span style="color:#4070a0">&#34;menu--collapse&#34;</span>,
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span>});
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span>&lt;/<span style="color:#062873;font-weight:bold">script</span>&gt;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span>{{- partial &#34;mathjax.html&#34; . -}}
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span>{{- partial &#34;mathjax_support.html&#34; . -}}
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span>&lt;/<span style="color:#062873;font-weight:bold">body</span>&gt;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span>&lt;/<span style="color:#062873;font-weight:bold">html</span>&gt;</code></pre></div>
+<p>通常の<code>$$</code>で囲んだ数式には式番号は表示されない．latexの書き方で<code>equation</code>か<code>align</code>で囲んだ数式にのみ式番号が表示される．
+\begin{align}
+  p(w_c|w_t)=\frac{\exp \left(v_t^{\mathrm{T}}\; v_c\right)}{\sum_{k=1}^{|V|}\exp \left(v_t^{\mathrm{T}}\; v_k\right)}
+\end{align}
+式番号を表示させたくないところには<code>\nonumber</code>をつける．基本的にはLatexの数式の書き方だが，改行は<code>\</code>を6つ並べないといけない．</p>
+
+<h3 id="syntax-highlightの設定">syntax highlightの設定</h3>
+
+<p>syntax highlightについては以下の記事を参考に行った． <br />
+<a href="https://www.meganii.com/blog/2017/10/14/hugo-syntax-highlighting/">HugoでのシンタックスハイライトにPython Pygmentsが不要となった - SIS Lab</a><br />
+<a href="https://gohugo.io/content-management/syntax-highlighting/">Syntax Highlighting | Hugo</a><br />
+syntax highlightを有効にするには<code>config.toml</code>に以下を書き加える．</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml:config.toml" data-lang="toml:config.toml"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>pygmentsCodefences = <span style="color:#007020;font-weight:bold">true</span></code></pre></div>
+<p>自分で色を設定したい人は<code>config.toml</code>に</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>pygmentsUseClasses = <span style="color:#007020;font-weight:bold">true</span></code></pre></div>
+<p>を加え，自分でcssコードを書く．または，既存のテーマの色を自分で少し設定し直す．既存のテーマのcssコード得るには以下のコードを実行する．</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>hugo gen chromastyles --style=themename &gt; tmp.css
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span># themenameのところをテーマの名前にする．</pre></div>
+<p>得られたcssコードを自分の<code>static/css/style.css</code>に書き加える．</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-css" data-lang="css"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span style="color:#60a0b0;font-style:italic">/* Background */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> { <span style="color:#007020;font-weight:bold">background-color</span>: <span style="color:#40a070">#f0f0f0</span> }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span style="color:#60a0b0;font-style:italic">/* Error */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> .<span style="color:#0e84b5;font-weight:bold">err</span> {  }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span style="color:#60a0b0;font-style:italic">/* LineTableTD */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> .<span style="color:#0e84b5;font-weight:bold">lntd</span> { <span style="color:#007020;font-weight:bold">vertical-align</span>: <span style="color:#007020;font-weight:bold">top</span>; <span style="color:#007020;font-weight:bold">padding</span>: <span style="color:#40a070">0</span>; <span style="color:#007020;font-weight:bold">margin</span>: <span style="color:#40a070">0</span>; <span style="color:#007020;font-weight:bold">border</span>: <span style="color:#40a070">0</span>; }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span style="color:#60a0b0;font-style:italic">/* LineTable */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> .<span style="color:#0e84b5;font-weight:bold">lntable</span> { <span style="color:#007020;font-weight:bold">border-spacing</span>: <span style="color:#40a070">0</span>; <span style="color:#007020;font-weight:bold">padding</span>: <span style="color:#40a070">0</span>; <span style="color:#007020;font-weight:bold">margin</span>: <span style="color:#40a070">0</span>; <span style="color:#007020;font-weight:bold">border</span>: <span style="color:#40a070">0</span>; <span style="color:#007020;font-weight:bold">width</span>: <span style="color:#007020;font-weight:bold">auto</span>; <span style="color:#007020;font-weight:bold">overflow</span>: <span style="color:#007020;font-weight:bold">auto</span>; <span style="color:#007020;font-weight:bold">display</span>: <span style="color:#007020;font-weight:bold">block</span>; }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span style="color:#60a0b0;font-style:italic">/* LineHighlight */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> .<span style="color:#0e84b5;font-weight:bold">hl</span> { <span style="color:#007020;font-weight:bold">display</span>: <span style="color:#007020;font-weight:bold">block</span>; <span style="color:#007020;font-weight:bold">width</span>: <span style="color:#40a070">100</span><span style="color:#902000">%</span>;<span style="color:#007020;font-weight:bold">background-color</span>: <span style="color:#40a070">#ffffcc</span> }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span style="color:#60a0b0;font-style:italic">/* LineNumbersTable */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> .<span style="color:#0e84b5;font-weight:bold">lnt</span> { <span style="color:#007020;font-weight:bold">margin-right</span>: <span style="color:#40a070">0.4</span><span style="color:#902000">em</span>; <span style="color:#007020;font-weight:bold">padding</span>: <span style="color:#40a070">0</span> <span style="color:#40a070">0.4</span><span style="color:#902000">em</span> <span style="color:#40a070">0</span> <span style="color:#40a070">0.4</span><span style="color:#902000">em</span>; }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span style="color:#60a0b0;font-style:italic">/* LineNumbers */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> .<span style="color:#0e84b5;font-weight:bold">ln</span> { <span style="color:#007020;font-weight:bold">margin-right</span>: <span style="color:#40a070">0.4</span><span style="color:#902000">em</span>; <span style="color:#007020;font-weight:bold">padding</span>: <span style="color:#40a070">0</span> <span style="color:#40a070">0.4</span><span style="color:#902000">em</span> <span style="color:#40a070">0</span> <span style="color:#40a070">0.4</span><span style="color:#902000">em</span>; }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span style="color:#60a0b0;font-style:italic">/* Keyword */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> .<span style="color:#0e84b5;font-weight:bold">k</span> { <span style="color:#007020;font-weight:bold">color</span>: <span style="color:#40a070">#007020</span>; <span style="color:#007020;font-weight:bold">font-weight</span>: <span style="color:#007020;font-weight:bold">bold</span> }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span style="color:#60a0b0;font-style:italic">/* KeywordConstant */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> .<span style="color:#0e84b5;font-weight:bold">kc</span> { <span style="color:#007020;font-weight:bold">color</span>: <span style="color:#40a070">#007020</span>; <span style="color:#007020;font-weight:bold">font-weight</span>: <span style="color:#007020;font-weight:bold">bold</span> }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span style="color:#60a0b0;font-style:italic">/* KeywordDeclaration */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> .<span style="color:#0e84b5;font-weight:bold">kd</span> { <span style="color:#007020;font-weight:bold">color</span>: <span style="color:#40a070">#007020</span>; <span style="color:#007020;font-weight:bold">font-weight</span>: <span style="color:#007020;font-weight:bold">bold</span> }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span style="color:#60a0b0;font-style:italic">/* KeywordNamespace */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> .<span style="color:#0e84b5;font-weight:bold">kn</span> { <span style="color:#007020;font-weight:bold">color</span>: <span style="color:#40a070">#007020</span>; <span style="color:#007020;font-weight:bold">font-weight</span>: <span style="color:#007020;font-weight:bold">bold</span> }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span style="color:#60a0b0;font-style:italic">/* KeywordPseudo */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> .<span style="color:#0e84b5;font-weight:bold">kp</span> { <span style="color:#007020;font-weight:bold">color</span>: <span style="color:#40a070">#007020</span> }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span style="color:#60a0b0;font-style:italic">/* KeywordReserved */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> .<span style="color:#0e84b5;font-weight:bold">kr</span> { <span style="color:#007020;font-weight:bold">color</span>: <span style="color:#40a070">#007020</span>; <span style="color:#007020;font-weight:bold">font-weight</span>: <span style="color:#007020;font-weight:bold">bold</span> }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span style="color:#60a0b0;font-style:italic">/* KeywordType */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> .<span style="color:#0e84b5;font-weight:bold">kt</span> { <span style="color:#007020;font-weight:bold">color</span>: <span style="color:#40a070">#902000</span> }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span style="color:#60a0b0;font-style:italic">/* NameAttribute */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> .<span style="color:#0e84b5;font-weight:bold">na</span> { <span style="color:#007020;font-weight:bold">color</span>: <span style="color:#40a070">#4070a0</span> }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span style="color:#60a0b0;font-style:italic">/* NameBuiltin */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> .<span style="color:#0e84b5;font-weight:bold">nb</span> { <span style="color:#007020;font-weight:bold">color</span>: <span style="color:#40a070">#007020</span> }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span style="color:#60a0b0;font-style:italic">/* NameClass */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> .<span style="color:#0e84b5;font-weight:bold">nc</span> { <span style="color:#007020;font-weight:bold">color</span>: <span style="color:#40a070">#0e84b5</span>; <span style="color:#007020;font-weight:bold">font-weight</span>: <span style="color:#007020;font-weight:bold">bold</span> }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span style="color:#60a0b0;font-style:italic">/* NameConstant */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> .<span style="color:#0e84b5;font-weight:bold">no</span> { <span style="color:#007020;font-weight:bold">color</span>: <span style="color:#40a070">#60add5</span> }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span style="color:#60a0b0;font-style:italic">/* NameDecorator */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> .<span style="color:#0e84b5;font-weight:bold">nd</span> { <span style="color:#007020;font-weight:bold">color</span>: <span style="color:#40a070">#555555</span>; <span style="color:#007020;font-weight:bold">font-weight</span>: <span style="color:#007020;font-weight:bold">bold</span> }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span><span style="color:#60a0b0;font-style:italic">/* NameEntity */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> .<span style="color:#0e84b5;font-weight:bold">ni</span> { <span style="color:#007020;font-weight:bold">color</span>: <span style="color:#40a070">#d55537</span>; <span style="color:#007020;font-weight:bold">font-weight</span>: <span style="color:#007020;font-weight:bold">bold</span> }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21</span><span style="color:#60a0b0;font-style:italic">/* NameException */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> .<span style="color:#0e84b5;font-weight:bold">ne</span> { <span style="color:#007020;font-weight:bold">color</span>: <span style="color:#40a070">#007020</span> }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22</span><span style="color:#60a0b0;font-style:italic">/* NameFunction */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> .<span style="color:#0e84b5;font-weight:bold">nf</span> { <span style="color:#007020;font-weight:bold">color</span>: <span style="color:#40a070">#06287e</span> }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23</span><span style="color:#60a0b0;font-style:italic">/* NameLabel */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> .<span style="color:#0e84b5;font-weight:bold">nl</span> { <span style="color:#007020;font-weight:bold">color</span>: <span style="color:#40a070">#002070</span>; <span style="color:#007020;font-weight:bold">font-weight</span>: <span style="color:#007020;font-weight:bold">bold</span> }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24</span><span style="color:#60a0b0;font-style:italic">/* NameNamespace */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> .<span style="color:#0e84b5;font-weight:bold">nn</span> { <span style="color:#007020;font-weight:bold">color</span>: <span style="color:#40a070">#0e84b5</span>; <span style="color:#007020;font-weight:bold">font-weight</span>: <span style="color:#007020;font-weight:bold">bold</span> }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25</span><span style="color:#60a0b0;font-style:italic">/* NameTag */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> .<span style="color:#0e84b5;font-weight:bold">nt</span> { <span style="color:#007020;font-weight:bold">color</span>: <span style="color:#40a070">#062873</span>; <span style="color:#007020;font-weight:bold">font-weight</span>: <span style="color:#007020;font-weight:bold">bold</span> }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26</span><span style="color:#60a0b0;font-style:italic">/* NameVariable */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> .<span style="color:#0e84b5;font-weight:bold">nv</span> { <span style="color:#007020;font-weight:bold">color</span>: <span style="color:#40a070">#bb60d5</span> }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27</span><span style="color:#60a0b0;font-style:italic">/* LiteralString */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> .<span style="color:#0e84b5;font-weight:bold">s</span> { <span style="color:#007020;font-weight:bold">color</span>: <span style="color:#40a070">#4070a0</span> }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28</span><span style="color:#60a0b0;font-style:italic">/* LiteralStringAffix */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> .<span style="color:#0e84b5;font-weight:bold">sa</span> { <span style="color:#007020;font-weight:bold">color</span>: <span style="color:#40a070">#4070a0</span> }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29</span><span style="color:#60a0b0;font-style:italic">/* LiteralStringBacktick */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> .<span style="color:#0e84b5;font-weight:bold">sb</span> { <span style="color:#007020;font-weight:bold">color</span>: <span style="color:#40a070">#4070a0</span> }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30</span><span style="color:#60a0b0;font-style:italic">/* LiteralStringChar */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> .<span style="color:#0e84b5;font-weight:bold">sc</span> { <span style="color:#007020;font-weight:bold">color</span>: <span style="color:#40a070">#4070a0</span> }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31</span><span style="color:#60a0b0;font-style:italic">/* LiteralStringDelimiter */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> .<span style="color:#0e84b5;font-weight:bold">dl</span> { <span style="color:#007020;font-weight:bold">color</span>: <span style="color:#40a070">#4070a0</span> }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32</span><span style="color:#60a0b0;font-style:italic">/* LiteralStringDoc */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> .<span style="color:#0e84b5;font-weight:bold">sd</span> { <span style="color:#007020;font-weight:bold">color</span>: <span style="color:#40a070">#4070a0</span>; <span style="color:#007020;font-weight:bold">font-style</span>: <span style="color:#007020;font-weight:bold">italic</span> }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33</span><span style="color:#60a0b0;font-style:italic">/* LiteralStringDouble */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> .<span style="color:#0e84b5;font-weight:bold">s2</span> { <span style="color:#007020;font-weight:bold">color</span>: <span style="color:#40a070">#4070a0</span> }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34</span><span style="color:#60a0b0;font-style:italic">/* LiteralStringEscape */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> .<span style="color:#0e84b5;font-weight:bold">se</span> { <span style="color:#007020;font-weight:bold">color</span>: <span style="color:#40a070">#4070a0</span>; <span style="color:#007020;font-weight:bold">font-weight</span>: <span style="color:#007020;font-weight:bold">bold</span> }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35</span><span style="color:#60a0b0;font-style:italic">/* LiteralStringHeredoc */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> .<span style="color:#0e84b5;font-weight:bold">sh</span> { <span style="color:#007020;font-weight:bold">color</span>: <span style="color:#40a070">#4070a0</span> }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36</span><span style="color:#60a0b0;font-style:italic">/* LiteralStringInterpol */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> .<span style="color:#0e84b5;font-weight:bold">si</span> { <span style="color:#007020;font-weight:bold">color</span>: <span style="color:#40a070">#70a0d0</span>; <span style="color:#007020;font-weight:bold">font-style</span>: <span style="color:#007020;font-weight:bold">italic</span> }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37</span><span style="color:#60a0b0;font-style:italic">/* LiteralStringOther */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> .<span style="color:#0e84b5;font-weight:bold">sx</span> { <span style="color:#007020;font-weight:bold">color</span>: <span style="color:#40a070">#c65d09</span> }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38</span><span style="color:#60a0b0;font-style:italic">/* LiteralStringRegex */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> .<span style="color:#0e84b5;font-weight:bold">sr</span> { <span style="color:#007020;font-weight:bold">color</span>: <span style="color:#40a070">#235388</span> }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39</span><span style="color:#60a0b0;font-style:italic">/* LiteralStringSingle */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> .<span style="color:#0e84b5;font-weight:bold">s1</span> { <span style="color:#007020;font-weight:bold">color</span>: <span style="color:#40a070">#4070a0</span> }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40</span><span style="color:#60a0b0;font-style:italic">/* LiteralStringSymbol */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> .<span style="color:#0e84b5;font-weight:bold">ss</span> { <span style="color:#007020;font-weight:bold">color</span>: <span style="color:#40a070">#517918</span> }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41</span><span style="color:#60a0b0;font-style:italic">/* LiteralNumber */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> .<span style="color:#0e84b5;font-weight:bold">m</span> { <span style="color:#007020;font-weight:bold">color</span>: <span style="color:#40a070">#40a070</span> }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42</span><span style="color:#60a0b0;font-style:italic">/* LiteralNumberBin */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> .<span style="color:#0e84b5;font-weight:bold">mb</span> { <span style="color:#007020;font-weight:bold">color</span>: <span style="color:#40a070">#40a070</span> }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43</span><span style="color:#60a0b0;font-style:italic">/* LiteralNumberFloat */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> .<span style="color:#0e84b5;font-weight:bold">mf</span> { <span style="color:#007020;font-weight:bold">color</span>: <span style="color:#40a070">#40a070</span> }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44</span><span style="color:#60a0b0;font-style:italic">/* LiteralNumberHex */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> .<span style="color:#0e84b5;font-weight:bold">mh</span> { <span style="color:#007020;font-weight:bold">color</span>: <span style="color:#40a070">#40a070</span> }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45</span><span style="color:#60a0b0;font-style:italic">/* LiteralNumberInteger */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> .<span style="color:#0e84b5;font-weight:bold">mi</span> { <span style="color:#007020;font-weight:bold">color</span>: <span style="color:#40a070">#40a070</span> }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46</span><span style="color:#60a0b0;font-style:italic">/* LiteralNumberIntegerLong */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> .<span style="color:#0e84b5;font-weight:bold">il</span> { <span style="color:#007020;font-weight:bold">color</span>: <span style="color:#40a070">#40a070</span> }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">47</span><span style="color:#60a0b0;font-style:italic">/* LiteralNumberOct */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> .<span style="color:#0e84b5;font-weight:bold">mo</span> { <span style="color:#007020;font-weight:bold">color</span>: <span style="color:#40a070">#40a070</span> }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">48</span><span style="color:#60a0b0;font-style:italic">/* Operator */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> .<span style="color:#0e84b5;font-weight:bold">o</span> { <span style="color:#007020;font-weight:bold">color</span>: <span style="color:#40a070">#666666</span> }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">49</span><span style="color:#60a0b0;font-style:italic">/* OperatorWord */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> .<span style="color:#0e84b5;font-weight:bold">ow</span> { <span style="color:#007020;font-weight:bold">color</span>: <span style="color:#40a070">#007020</span>; <span style="color:#007020;font-weight:bold">font-weight</span>: <span style="color:#007020;font-weight:bold">bold</span> }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">50</span><span style="color:#60a0b0;font-style:italic">/* Comment */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> .<span style="color:#0e84b5;font-weight:bold">c</span> { <span style="color:#007020;font-weight:bold">color</span>: <span style="color:#40a070">#60a0b0</span>; <span style="color:#007020;font-weight:bold">font-style</span>: <span style="color:#007020;font-weight:bold">italic</span> }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">51</span><span style="color:#60a0b0;font-style:italic">/* CommentHashbang */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> .<span style="color:#0e84b5;font-weight:bold">ch</span> { <span style="color:#007020;font-weight:bold">color</span>: <span style="color:#40a070">#60a0b0</span>; <span style="color:#007020;font-weight:bold">font-style</span>: <span style="color:#007020;font-weight:bold">italic</span> }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">52</span><span style="color:#60a0b0;font-style:italic">/* CommentMultiline */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> .<span style="color:#0e84b5;font-weight:bold">cm</span> { <span style="color:#007020;font-weight:bold">color</span>: <span style="color:#40a070">#60a0b0</span>; <span style="color:#007020;font-weight:bold">font-style</span>: <span style="color:#007020;font-weight:bold">italic</span> }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">53</span><span style="color:#60a0b0;font-style:italic">/* CommentSingle */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> .<span style="color:#0e84b5;font-weight:bold">c1</span> { <span style="color:#007020;font-weight:bold">color</span>: <span style="color:#40a070">#60a0b0</span>; <span style="color:#007020;font-weight:bold">font-style</span>: <span style="color:#007020;font-weight:bold">italic</span> }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">54</span><span style="color:#60a0b0;font-style:italic">/* CommentSpecial */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> .<span style="color:#0e84b5;font-weight:bold">cs</span> { <span style="color:#007020;font-weight:bold">color</span>: <span style="color:#40a070">#60a0b0</span>; <span style="color:#007020;font-weight:bold">background-color</span>: <span style="color:#40a070">#fff0f0</span> }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">55</span><span style="color:#60a0b0;font-style:italic">/* CommentPreproc */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> .<span style="color:#0e84b5;font-weight:bold">cp</span> { <span style="color:#007020;font-weight:bold">color</span>: <span style="color:#40a070">#007020</span> }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">56</span><span style="color:#60a0b0;font-style:italic">/* CommentPreprocFile */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> .<span style="color:#0e84b5;font-weight:bold">cpf</span> { <span style="color:#007020;font-weight:bold">color</span>: <span style="color:#40a070">#007020</span> }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">57</span><span style="color:#60a0b0;font-style:italic">/* GenericDeleted */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> .<span style="color:#0e84b5;font-weight:bold">gd</span> { <span style="color:#007020;font-weight:bold">color</span>: <span style="color:#40a070">#a00000</span> }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">58</span><span style="color:#60a0b0;font-style:italic">/* GenericEmph */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> .<span style="color:#0e84b5;font-weight:bold">ge</span> { <span style="color:#007020;font-weight:bold">font-style</span>: <span style="color:#007020;font-weight:bold">italic</span> }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">59</span><span style="color:#60a0b0;font-style:italic">/* GenericError */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> .<span style="color:#0e84b5;font-weight:bold">gr</span> { <span style="color:#007020;font-weight:bold">color</span>: <span style="color:#40a070">#ff0000</span> }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">60</span><span style="color:#60a0b0;font-style:italic">/* GenericHeading */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> .<span style="color:#0e84b5;font-weight:bold">gh</span> { <span style="color:#007020;font-weight:bold">color</span>: <span style="color:#40a070">#000080</span>; <span style="color:#007020;font-weight:bold">font-weight</span>: <span style="color:#007020;font-weight:bold">bold</span> }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">61</span><span style="color:#60a0b0;font-style:italic">/* GenericInserted */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> .<span style="color:#0e84b5;font-weight:bold">gi</span> { <span style="color:#007020;font-weight:bold">color</span>: <span style="color:#40a070">#00a000</span> }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">62</span><span style="color:#60a0b0;font-style:italic">/* GenericOutput */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> .<span style="color:#0e84b5;font-weight:bold">go</span> { <span style="color:#007020;font-weight:bold">color</span>: <span style="color:#40a070">#888888</span> }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">63</span><span style="color:#60a0b0;font-style:italic">/* GenericPrompt */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> .<span style="color:#0e84b5;font-weight:bold">gp</span> { <span style="color:#007020;font-weight:bold">color</span>: <span style="color:#40a070">#c65d09</span>; <span style="color:#007020;font-weight:bold">font-weight</span>: <span style="color:#007020;font-weight:bold">bold</span> }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">64</span><span style="color:#60a0b0;font-style:italic">/* GenericStrong */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> .<span style="color:#0e84b5;font-weight:bold">gs</span> { <span style="color:#007020;font-weight:bold">font-weight</span>: <span style="color:#007020;font-weight:bold">bold</span> }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">65</span><span style="color:#60a0b0;font-style:italic">/* GenericSubheading */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> .<span style="color:#0e84b5;font-weight:bold">gu</span> { <span style="color:#007020;font-weight:bold">color</span>: <span style="color:#40a070">#800080</span>; <span style="color:#007020;font-weight:bold">font-weight</span>: <span style="color:#007020;font-weight:bold">bold</span> }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">66</span><span style="color:#60a0b0;font-style:italic">/* GenericTraceback */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> .<span style="color:#0e84b5;font-weight:bold">gt</span> { <span style="color:#007020;font-weight:bold">color</span>: <span style="color:#40a070">#0044dd</span> }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">67</span><span style="color:#60a0b0;font-style:italic">/* TextWhitespace */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> .<span style="color:#0e84b5;font-weight:bold">w</span> { <span style="color:#007020;font-weight:bold">color</span>: <span style="color:#40a070">#bbbbbb</span> }</code></pre></div>
+<!--
+コードブロックにスライドバーを表示させたかった．．．
+`style.css`のpre のところでmax-heightを決め，overflowをauto又はscrollにしたら縦方向はできたが，横方向は`white-space = pre`にしてmax-widthを決める必要があったがブラウザの大きさによってコードブロックの横幅が変わるのを考慮する方法がわからなかった．．．
+ちなみにoverflowはx,yで横方向，縦方向の挙動を変えられる．css overflowで調べると挙動の種類がわかる．
+-->
+
+<h3 id="reading-timeについて">Reading timeについて</h3>
+
+<p>Reading timeを<code>layouts/partials/post_meta.html</code>の最後に付け加えた．</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>{{ if not .Site.Params.disableReadingTime }}  　~ {{ .ReadingTime }} minute read ~{{ end }}</code></pre></div>
+<h2 id="disqusの導入">Disqusの導入</h2>
+
+<h2 id="github-pagesの設定">GitHub Pagesの設定</h2>
+
+<p>以下のサイトを参考に行った．
+<a href="http://kohki.hatenablog.jp/entry/hugo-portfolio">Hugo + GitHub Pagesでポートフォリオを作る - プログラミングで世界を変える</a></p>
+
+<p>Google analytics <br />
+google search console</p>
+
+<h2 id="references">references</h2>
+
+<p>Hugoについて</p>
+
+<ul>
+<li><a href="https://www.youtube.com/watch?v=qtIqKaDlqXo&amp;list=PLLAZ4kZ9dFpOnyRlyS-liKL5ReHDcj4G3">Giraffe AcademyのHugo解説 playlist</a></li>
+</ul>
+
+<p>数式の表示</p>
+
+<ul>
+<li><a href="http://iimuz.github.io/post/2016/11/hugotex/">Hugoで数式を導入します | しさく</a></li>
+<li><a href="https://github.com/mathjax/MathJax/issues/984">Doesn&rsquo;t parse when there are more than one \sum or \inf in an equation · Issue #984 · mathjax/MathJax</a></li>
+<li><a href="https://divadnojnarg.github.io/blog/mathjax/">Setting MathJax with Hugo | Hi, I am David</a></li>
+<li><a href="https://pennbay.github.io/tech/mathjax.with.hugo/">Using MathJax With Hugo Mainroad</a></li>
+</ul>
+
+		</div>
+		
+<div class="post__tags tags clearfix">
+	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16"><path d="M16 9.5c0 .373-.24.74-.5 1l-5 5c-.275.26-.634.5-1 .5-.373 0-.74-.24-1-.5L1 8a2.853 2.853 0 0 1-.7-1C.113 6.55 0 5.973 0 5.6V1.4C0 1.034.134.669.401.401.67.134 1.034 0 1.4 0h4.2c.373 0 .95.113 1.4.3.45.187.732.432 1 .7l7.5 7.502c.26.274.5.632.5.998zM3.5 5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link btn" href="https://imyutaro.github.io/blog/tags/others/" rel="tag">others</a></li>
+	</ul>
+</div>
+	</article>
+	
+	
+	
+</main>
+
+
+<aside class="sidebar">
+	
+<div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+		<label>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="https://imyutaro.github.io/blog" />
+	</form>
+</div>
+
+	
+<div class="widget-recent widget">
+	<h4 class="widget__title">Recent Posts</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="https://imyutaro.github.io/blog/blog/firstpost/">Hugo&#43;GitHub Pagesでblog作成</a></li>
+		</ul>
+	</div>
+</div>
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">Categories</h4>
+	<div class="widget__content" style="text-transform: uppercase;">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="https://imyutaro.github.io/blog/categories/blog">Blog</a></li>
+		</ul>
+	</div>
+</div>
+
+	
+<div class="widget-social widget">
+	<h4 class="widget-social__title widget__title">Social</h4>
+	<div class="widget-social__content widget__content">
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="Twitter" rel="noopener noreferrer" href="https://twitter.com/u_yutary" target="_blank">
+				<svg class="widget-social__link-icon icon-twitter" viewBox="0 0 384 312" width="24" height="24" fill="#fff"><path d="m384 36.9c-14.1 6.3-29.3 10.5-45.2 12.4 16.3-9.7 28.8-25.2 34.6-43.6-15.2 9-32.1 15.6-50 19.1-14.4-15.2-34.9-24.8-57.5-24.8-43.5 0-78.8 35.3-78.8 78.8 0 6.2.7 12.2 2 17.9-65.5-3.3-123.5-34.6-162.4-82.3-6.7 11.6-10.6 25.2-10.6 39.6 0 27.3 13.9 51.4 35 65.6-12.9-.4-25.1-4-35.7-9.9v1c0 38.2 27.2 70 63.2 77.2-6.6 1.8-13.6 2.8-20.8 2.8-5.1 0-10-.5-14.8-1.4 10 31.3 39.1 54.1 73.6 54.7-27 21.1-60.9 33.7-97.8 33.7-6.4 0-12.6-.4-18.8-1.1 34.9 22.4 76.3 35.4 120.8 35.4 144.9 0 224.1-120 224.1-224.1 0-3.4-.1-6.8-.2-10.2 15.4-11.1 28.7-25 39.3-40.8z"/></svg>
+				<span>Twitter</span>
+			</a>
+		</div>
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="GitHub" rel="noopener noreferrer" href="https://github.com/imyutaro" target="_blank">
+				<svg class="widget-social__link-icon icon-github" viewBox="0 0 384 374" width="24" height="24" fill="#fff"><path d="m192 0c-106.1 0-192 85.8-192 191.7 0 84.7 55 156.6 131.3 181.9 9.6 1.8 13.1-4.2 13.1-9.2 0-4.6-.2-16.6-.3-32.6-53.4 11.6-64.7-25.7-64.7-25.7-8.7-22.1-21.3-28-21.3-28-17.4-11.9 1.3-11.6 1.3-11.6 19.3 1.4 29.4 19.8 29.4 19.8 17.1 29.3 44.9 20.8 55.9 15.9 1.7-12.4 6.7-20.8 12.2-25.6-42.6-4.8-87.5-21.3-87.5-94.8 0-20.9 7.5-38 19.8-51.4-2-4.9-8.6-24.3 1.9-50.7 0 0 16.1-5.2 52.8 19.7 15.3-4.2 31.7-6.4 48.1-6.5 16.3.1 32.7 2.2 48.1 6.5 36.7-24.8 52.8-19.7 52.8-19.7 10.5 26.4 3.9 45.9 1.9 50.7 12.3 13.4 19.7 30.5 19.7 51.4 0 73.7-44.9 89.9-87.7 94.6 6.9 5.9 13 17.6 13 35.5 0 25.6-.2 46.3-.2 52.6 0 5.1 3.5 11.1 13.2 9.2 76.2-25.5 131.2-97.3 131.2-182 0-105.9-86-191.7-192-191.7z"/></svg>
+				<span>GitHub</span>
+			</a>
+		</div>
+	</div>
+</div>
+	
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Tags</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="https://imyutaro.github.io/blog/tags/others" title="Others">Others (1)</a>
+	</div>
+</div>
+
+</aside>
+	</div>
+		<footer class="footer">
+			<div class="container container-inner">
+				<div class="footer__copyright">&copy; 2018 あうとぷっと. <span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span></div>
+			</div>
+		</footer>
+	</div>
+
+<script>
+	var navigation = responsiveNav(".menu", {
+		navClass: "menu--collapse",
+	});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Config({
+  // Autonumbering by mathjax
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+
+</body>
+</html>
+

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blogs on あうとぷっと</title>
+    <link>https://imyutaro.github.io/blog/blog/</link>
+    <description>Recent content in Blogs on あうとぷっと</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Fri, 10 Aug 2018 21:16:24 +0900</lastBuildDate>
+    
+	<atom:link href="https://imyutaro.github.io/blog/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Hugo&#43;GitHub Pagesでblog作成</title>
+      <link>https://imyutaro.github.io/blog/blog/firstpost/</link>
+      <pubDate>Fri, 10 Aug 2018 21:16:24 +0900</pubDate>
+      
+      <guid>https://imyutaro.github.io/blog/blog/firstpost/</guid>
+      <description>Blogをはじめた 自分が勉強していることをoutputとしてblogにまとめることにした．このblogはHugoというGoで作られた静的サイ</description>
+    </item>
+    
+  </channel>
+</rss>

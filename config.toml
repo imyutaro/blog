@@ -13,6 +13,7 @@ pygmentsCodeFencesGuessSyntax = true
 pygmentsStyle = "friendly"
 hasCJKLanguage = true # summaryの表示をいい感じにするやつ 参考:https://blog.awm.jp/2016/01/02/hugo/
 canonifyurls = true
+publishDir = "docs" #for github pages
 
 [Author] # Used in authorbox
   name = "YUTARO"
