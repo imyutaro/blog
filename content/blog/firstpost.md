@@ -222,7 +222,7 @@ Reading timeを`layouts/partials/post_meta.html`の最後に付け加えた．
 ## Disqusの導入
 
 ## GitHub Pagesの設定
-以下のサイトを参考に行った．
+以下のサイトを参考に行った．\
 [Hugo + GitHub Pagesでポートフォリオを作る - プログラミングで世界を変える](http://kohki.hatenablog.jp/entry/hugo-portfolio)
 
 
