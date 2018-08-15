@@ -1,0 +1,60 @@
+baseurl = "https://imyutaro.github.io/blog"
+title = "あうとぷっと"
+#languageCode = "en-us"
+languageCode = "ja"
+paginate = "10" # Number of posts per page
+theme = "mainroad"
+disqusShortname = "u-yutary" # Enable comments by entering your Disqus shortname
+googleAnalytics = "" # Enable Google Analytics by entering your tracking id
+pygmentsCodefences = true # ```で囲んだコードをハイライトする設定
+#pygmentsUseClasses = true # 自分でsyntax highlightの色を決めたいときにはtrueにする．今回はfriendlyというテーマを使っているからtrueにしない．
+pygmentsOptions = "linenos=inline" # 行番号表示のオプション
+pygmentsCodeFencesGuessSyntax = true
+pygmentsStyle = "friendly"
+hasCJKLanguage = true # summaryの表示をいい感じにするやつ 参考:https://blog.awm.jp/2016/01/02/hugo/
+canonifyurls = true
+
+[Author] # Used in authorbox
+  name = "YUTARO"
+  bio = "I am a 1st year master student at university."
+  #avatar = ""
+
+[Params]
+  #subtitle = "Just another site" # Subtitle of your site. Used in site header
+  description = "summary which i studied" # Site description. Used in meta description
+  opengraph = true # Enable OpenGraph if true
+  twitter_cards = true # Enable Twitter Cards if true
+  readmore = true # Show "Read more" button in list if true
+  homeLayout = "content + sidebar" # Configure home page layout
+  listLayout = "content + sidebar" # Configure layout for list pages
+  singleLayout = "content + sidebar" # Configure layout for single pages
+  authorbox = true # Show authorbox at bottom of pages if true
+  toc = true # Enable Table of Contents
+  post_navigation = true # Show post navigation at bottom of pages if true
+  #postSections = ["note"] # the section pages to show on home page and the "Recent articles" widget
+  postSections = ["blog", "note"] # alternative that shows more than one section's pages
+  #dateformat = "2006-01-02" # change the format of dates
+  mathjax = true # Enable MathJax
+  mathjaxPath = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" # Specify MathJax path
+  mathjaxConfig = "TeX-AMS-MML_HTMLorMML" # Specify MathJax config
+  #mathjaxPath = "https://cdn.mathjax.org/mathjax/latest/MathJax.js"
+  #mathjaxConfig = "TeX-AMS-MML_HTMLorMML"
+  disableReadingTime = false # Set to true to hide ReadingTime on posts
+
+
+[Params.widgets]
+  search = true # Enable "Search" widget
+  recent_articles = true # Enable "Recent articles" widget
+  recent_articles_num = 5 # Set the number of articles in the "Recent articles" widget
+  categories = true # Enable "Categories" widget
+  tags = true # Enable "Tags" widget
+  tags_counter = true # Enable counter for each tag in "Tags" widget (disabled by default)
+
+  # Enable "Social" widget, if any of "social_*" set a value
+  social_twitter = "u_yutary"
+  social_github = "imyutaro"
+  #social_facebook = "username"
+  #social_linkedin = "username"
+  #social_telegram = "username"
+  #social_email = "example@example.com"
+  #social_google_plus = "profileid"
