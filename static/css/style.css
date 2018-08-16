@@ -344,30 +344,26 @@ address {
 	line-height: 1.5;
 }
 
+dl {
+	margin: 0 0 10px 20px;
+  margin-bottom: 30px;
+}
 
 dt,
 dd {
 	display: list-item;
 }
 
-dl,
-dd {
-  margin-bottom: 5px;
-}
-
-dl {
-	margin: 0 0 10px 20px;
-  margin-bottom: 30px;
-}
-
 dt {
 	font-weight: bold;
 	list-style-type: disc;
+  margin-top: 15px;
 }
 
 dd {
 	margin-left: 20px;
 	list-style-type: circle;
+  padding-bottom: 0px;
 }
 
 select {

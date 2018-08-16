@@ -262,3 +262,8 @@ Hugoについて
 
 その他
 : [Hugoでブログ作成](https://tkat0.github.io/blog/writing-blog-with-hugo-1/)
+
+<!--
+listのネストについてhtmlに変換したら何故か<p>タグが入ってしまう問題
+[同じissue](https://github.com/russross/blackfriday/issues/235)
+-->
