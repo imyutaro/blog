@@ -28,8 +28,10 @@ Giraffe AcademyというYouTubeチャンネルの解説がわかりやすくそ�
 テーマは[mainroad](https://themes.gohugo.io/mainroad/)を利用している．
 
 ### 数式を表示
-また，数式を書くために以下のサイトを参考に数式表示できるようにした．\
-[Hugoで数式を導入します | しさく](http://iimuz.github.io/post/2016/11/hugotex/) \
+また，数式を書くために以下のサイトを参考に数式表示できるようにした．
+
+- [Hugoで数式を導入します | しさく](http://iimuz.github.io/post/2016/11/hugotex/)
+
 `layout/partials/mathjax_support.html`というファイルを作って以下のコードを書いて数式をレンダリングできるようにした．
 
 ```html:mathjax_support.html
@@ -49,9 +51,13 @@ $$
 \sum_{i=0}^N v_i
 $$
 
-上記の設定のみだと`\sum`が2回続くつまり，`\sum_{a=0}^A \sum_{b=0}^B`としたりしたらうまく表示できない．これは，`\prod`や `\int`などでも起こる． \
-`\sum_{}`の`_`(アンダースコア)の前に`\`(バックスラッシュ又は`¥`)を入れれば表示される．\
-[Setting MathJax with Hugo | Hi, I am David](https://divadnojnarg.github.io/blog/mathjax/)
+上記の設定だと`\sum`が2回続くつまり，`\sum_{a=0}^A \sum_{b=0}^B`としたりしたらうまく表示できない．これは，`\prod`や `\int`などでも起こる． \
+`\sum_{}`の`_`(アンダースコア)の前に`\`(バックスラッシュ又は`¥`)を入れれば表示される．
+
+- [Setting MathJax with Hugo | Hi, I am David](https://divadnojnarg.github.io/blog/mathjax/)
+
+Atomでmarkdownのプレビューが出来るようにと思って上記の設定をしたが結局`_`を入れないといけないならKaTeXを使ったほうが良いかも?\
+KaTeXならshortcodeを使ったり数式があるときだけjsファイルを読み込んだりするから良いかもしれない，localhostでプレビューする必要があるけど．．．
 
 ### 式番号の表示
 式番号を自動で入れる場合には以下を`layouts/partials/mathjax_support.html`に書く．
@@ -112,26 +118,29 @@ var navigation = responsiveNav(".menu", {
 </html>
 ```
 
-通常の`$$`で囲んだ数式には式番号は表示されない．latexの書き方で`equation`か`align`で囲んだ数式にのみ式番号が表示される．
+通常の`$$`で囲んだ数式には式番号は表示されない．LaTeXの書き方で`equation`か`align`で囲んだ数式にのみ式番号が表示される．
 \begin{align}
   p(w_c|w_t)=\frac{\exp \left(v_t^{\mathrm{T}}\; v_c\right)}{\sum\_{k=1}^{|V|}\exp \left(v_t^{\mathrm{T}}\; v_k\right)}
 \end{align}
-式番号を表示させたくないところには`\nonumber`をつける．基本的にはLatexの数式の書き方だが，改行は`\`を6つ並べないといけない．
+式番号を表示させたくないところには`\nonumber`をつける．基本的にはLaTeXの数式の書き方だが，改行は`\`を6つ並べないといけない．
 
 ### syntax highlightの設定
-syntax highlightについては以下の記事を参考に行った． \
-[HugoでのシンタックスハイライトにPython Pygmentsが不要となった - SIS Lab](https://www.meganii.com/blog/2017/10/14/hugo-syntax-highlighting/)\
-[Syntax Highlighting | Hugo](https://gohugo.io/content-management/syntax-highlighting/)\
+syntax highlightについては以下の記事を参考に行った．
+
+- [Syntax Highlighting | Hugo](https://gohugo.io/content-management/syntax-highlighting/)
+- [HugoでのシンタックスハイライトにPython Pygmentsが不要となった - SIS Lab](https://www.meganii.com/blog/2017/10/14/hugo-syntax-highlighting/)
+
 syntax highlightを有効にするには`config.toml`に以下を書き加える．
-```toml:config.toml
+```toml
 pygmentsCodefences = true
+pygmentsStyle = "themename" #themenameのところにthemeの名前を入れる
 ```
 自分で色を設定したい人は`config.toml`に
 ```toml
 pygmentsUseClasses = true
 ```
 を加え，自分でcssコードを書く．または，既存のテーマの色を自分で少し設定し直す．既存のテーマのcssコード得るには以下のコードを実行する．
-```
+```bash
 hugo gen chromastyles --style=themename > tmp.css
 # themenameのところをテーマの名前にする．
 ```
@@ -219,24 +228,37 @@ Reading timeを`layouts/partials/post_meta.html`の最後に付け加えた．
 {{ if not .Site.Params.disableReadingTime }}  　~ {{ .ReadingTime }} minute read ~{{ end }}
 ```
 
-## Disqusの導入
-
 ## GitHub Pagesの設定
-以下のサイトを参考に行った．\
-[Hugo + GitHub Pagesでポートフォリオを作る - プログラミングで世界を変える](http://kohki.hatenablog.jp/entry/hugo-portfolio)
+Hugo公式のページ([Host on GitHub | Hugo](https://gohugo.io/hosting-and-deployment/hosting-on-github/))を参考にGitHub pagesの設定を行った．\
+GitHub Pagesには2種類のサイトの形式がある．
+
+1. User/Organization Pages
+2. Project Pages
+
+| 用途 | URL | レンダリング |
+| :---: | :---: | :---: |
+| User/Organization Pages | https://<USERNAME/ORGANIZATION>.github.io/ | レポジトリ直下 |
+| Project Pages | https://<USERNAME/ORGANIZATION>.github.io/<PROJECT>/ | docsフォルダ直下 |
+
+1.には`https://<USERNAME|ORGANIZATION>.github.io/`, 2.には`https://<USERNAME|ORGANIZATION>.github.io/<PROJECT>/`というurlが与えられる．
+GitHubでリポジトリを作る．
 
 
-Google analytics \
-google search console
-
+<!--
+## Google analytics \
+## google search console
+## Disqusの導入
+-->
 ## references
-Hugoについて
 
-- [Giraffe AcademyのHugo解説 playlist](https://www.youtube.com/watch?v=qtIqKaDlqXo&list=PLLAZ4kZ9dFpOnyRlyS-liKL5ReHDcj4G3)
+Hugoについて
+: [Giraffe AcademyのHugo解説 playlist](https://www.youtube.com/watch?v=qtIqKaDlqXo&list=PLLAZ4kZ9dFpOnyRlyS-liKL5ReHDcj4G3)
 
 数式の表示
+: [Hugoで数式を導入します | しさく](http://iimuz.github.io/post/2016/11/hugotex/)
+: [Doesn't parse when there are more than one \sum or \inf in an equation · Issue #984 · mathjax/MathJax](https://github.com/mathjax/MathJax/issues/984)
+: [Setting MathJax with Hugo | Hi, I am David](https://divadnojnarg.github.io/blog/mathjax/)
+: [Using MathJax With Hugo Mainroad](https://pennbay.github.io/tech/mathjax.with.hugo/)
 
-- [Hugoで数式を導入します | しさく](http://iimuz.github.io/post/2016/11/hugotex/)
-- [Doesn't parse when there are more than one \sum or \inf in an equation · Issue #984 · mathjax/MathJax](https://github.com/mathjax/MathJax/issues/984)
-- [Setting MathJax with Hugo | Hi, I am David](https://divadnojnarg.github.io/blog/mathjax/)
-- [Using MathJax With Hugo Mainroad](https://pennbay.github.io/tech/mathjax.with.hugo/)
+その他
+: [Hugoでブログ作成](https://tkat0.github.io/blog/writing-blog-with-hugo-1/)

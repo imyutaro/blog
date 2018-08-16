@@ -344,18 +344,25 @@ address {
 	line-height: 1.5;
 }
 
-dl {
-	margin: 0 0 10px 20px;
-}
 
 dt,
 dd {
 	display: list-item;
 }
 
+dl,
+dd {
+  margin-bottom: 5px;
+}
+
+dl {
+	margin: 0 0 10px 20px;
+  margin-bottom: 30px;
+}
+
 dt {
 	font-weight: bold;
-	list-style-type: square;
+	list-style-type: disc;
 }
 
 dd {
@@ -632,7 +639,7 @@ select {
 }
 
 .post__content ul {
-	list-style: square;
+	list-style: disc; /* ここをsquareからdiscに変更してlistの記号を変更 */
 }
 
 .post__content ol {
@@ -644,9 +651,13 @@ select {
 	margin: 0 0 20px 40px;
 }
 
-.post__content ul ul,
+.post__content ul ul {
+	margin: 0 0 20px 20px;
+  list-style: circle; /* ここを追加して2階層目のlistの記号を変更 */
+}
+
 .post__content ol ol {
-	margin: 0 0 0 40px;
+	margin: 0 0 20px 20px;
 }
 
 .post__content li {

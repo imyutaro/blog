@@ -66,7 +66,7 @@
 	<svg class="icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
 	<span class="meta-categories__list"><a class="meta-categories__link" href="https://imyutaro.github.io/blog/categories/blog" rel="category">BLOG</a></span>
 </span>
-  　~ 5 minute read ~
+  　~ 6 minute read ~
 </div>
 		</header>
 <div class="post__toc toc">
@@ -84,7 +84,6 @@
 <li><a href="#syntax-highlightの設定">syntax highlightの設定</a></li>
 <li><a href="#reading-timeについて">Reading timeについて</a></li>
 </ul></li>
-<li><a href="#disqusの導入">Disqusの導入</a></li>
 <li><a href="#github-pagesの設定">GitHub Pagesの設定</a></li>
 <li><a href="#references">references</a></li>
 </ul></li>
@@ -112,9 +111,13 @@
 
 <h3 id="数式を表示">数式を表示</h3>
 
-<p>また，数式を書くために以下のサイトを参考に数式表示できるようにした．<br />
-<a href="http://iimuz.github.io/post/2016/11/hugotex/">Hugoで数式を導入します | しさく</a> <br />
-<code>layout/partials/mathjax_support.html</code>というファイルを作って以下のコードを書いて数式をレンダリングできるようにした．</p>
+<p>また，数式を書くために以下のサイトを参考に数式表示できるようにした．</p>
+
+<ul>
+<li><a href="http://iimuz.github.io/post/2016/11/hugotex/">Hugoで数式を導入します | しさく</a></li>
+</ul>
+
+<p><code>layout/partials/mathjax_support.html</code>というファイルを作って以下のコードを書いて数式をレンダリングできるようにした．</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html:mathjax_support.html" data-lang="html:mathjax_support.html"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span style="color:#60a0b0;font-style:italic">&lt;!-- tex --&gt;</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span>&lt;<span style="color:#062873;font-weight:bold">script</span> <span style="color:#4070a0">type</span><span style="color:#666">=</span><span style="color:#4070a0">&#34;text/x-mathjax-config&#34;</span>&gt;
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span>  MathJax.Hub.Config({
@@ -130,9 +133,15 @@ $$
 \sum_{i=0}^N v_i
 $$</p>
 
-<p>上記の設定のみだと<code>\sum</code>が2回続くつまり，<code>\sum_{a=0}^A \sum_{b=0}^B</code>としたりしたらうまく表示できない．これは，<code>\prod</code>や <code>\int</code>などでも起こる． <br />
-<code>\sum_{}</code>の<code>_</code>(アンダースコア)の前に<code>\</code>(バックスラッシュ又は<code>¥</code>)を入れれば表示される．<br />
-<a href="https://divadnojnarg.github.io/blog/mathjax/">Setting MathJax with Hugo | Hi, I am David</a></p>
+<p>上記の設定だと<code>\sum</code>が2回続くつまり，<code>\sum_{a=0}^A \sum_{b=0}^B</code>としたりしたらうまく表示できない．これは，<code>\prod</code>や <code>\int</code>などでも起こる． <br />
+<code>\sum_{}</code>の<code>_</code>(アンダースコア)の前に<code>\</code>(バックスラッシュ又は<code>¥</code>)を入れれば表示される．</p>
+
+<ul>
+<li><a href="https://divadnojnarg.github.io/blog/mathjax/">Setting MathJax with Hugo | Hi, I am David</a></li>
+</ul>
+
+<p>Atomでmarkdownのプレビューが出来るようにと思って上記の設定をしたが結局<code>_</code>を入れないといけないならKaTeXを使ったほうが良いかも?<br />
+KaTeXならshortcodeを使ったり数式があるときだけjsファイルを読み込んだりするから良いかもしれない，localhostでプレビューする必要があるけど．．．</p>
 
 <h3 id="式番号の表示">式番号の表示</h3>
 
@@ -182,24 +191,29 @@ $$</p>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span>{{- partial &#34;mathjax_support.html&#34; . -}}
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span>&lt;/<span style="color:#062873;font-weight:bold">body</span>&gt;
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span>&lt;/<span style="color:#062873;font-weight:bold">html</span>&gt;</code></pre></div>
-<p>通常の<code>$$</code>で囲んだ数式には式番号は表示されない．latexの書き方で<code>equation</code>か<code>align</code>で囲んだ数式にのみ式番号が表示される．
+<p>通常の<code>$$</code>で囲んだ数式には式番号は表示されない．LaTeXの書き方で<code>equation</code>か<code>align</code>で囲んだ数式にのみ式番号が表示される．
 \begin{align}
   p(w_c|w_t)=\frac{\exp \left(v_t^{\mathrm{T}}\; v_c\right)}{\sum_{k=1}^{|V|}\exp \left(v_t^{\mathrm{T}}\; v_k\right)}
 \end{align}
-式番号を表示させたくないところには<code>\nonumber</code>をつける．基本的にはLatexの数式の書き方だが，改行は<code>\</code>を6つ並べないといけない．</p>
+式番号を表示させたくないところには<code>\nonumber</code>をつける．基本的にはLaTeXの数式の書き方だが，改行は<code>\</code>を6つ並べないといけない．</p>
 
 <h3 id="syntax-highlightの設定">syntax highlightの設定</h3>
 
-<p>syntax highlightについては以下の記事を参考に行った． <br />
-<a href="https://www.meganii.com/blog/2017/10/14/hugo-syntax-highlighting/">HugoでのシンタックスハイライトにPython Pygmentsが不要となった - SIS Lab</a><br />
-<a href="https://gohugo.io/content-management/syntax-highlighting/">Syntax Highlighting | Hugo</a><br />
-syntax highlightを有効にするには<code>config.toml</code>に以下を書き加える．</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml:config.toml" data-lang="toml:config.toml"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>pygmentsCodefences = <span style="color:#007020;font-weight:bold">true</span></code></pre></div>
+<p>syntax highlightについては以下の記事を参考に行った．</p>
+
+<ul>
+<li><a href="https://gohugo.io/content-management/syntax-highlighting/">Syntax Highlighting | Hugo</a></li>
+<li><a href="https://www.meganii.com/blog/2017/10/14/hugo-syntax-highlighting/">HugoでのシンタックスハイライトにPython Pygmentsが不要となった - SIS Lab</a></li>
+</ul>
+
+<p>syntax highlightを有効にするには<code>config.toml</code>に以下を書き加える．</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>pygmentsCodefences = <span style="color:#007020;font-weight:bold">true</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span>pygmentsStyle = <span style="color:#4070a0">&#34;themename&#34;</span> <span style="color:#60a0b0;font-style:italic">#themenameのところにthemeの名前を入れる</span></code></pre></div>
 <p>自分で色を設定したい人は<code>config.toml</code>に</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>pygmentsUseClasses = <span style="color:#007020;font-weight:bold">true</span></code></pre></div>
 <p>を加え，自分でcssコードを書く．または，既存のテーマの色を自分で少し設定し直す．既存のテーマのcssコード得るには以下のコードを実行する．</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>hugo gen chromastyles --style=themename &gt; tmp.css
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span># themenameのところをテーマの名前にする．</pre></div>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>hugo gen chromastyles --style<span style="color:#666">=</span>themename &gt; tmp.css
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span># themenameのところをテーマの名前にする．</code></pre></div>
 <p>得られたcssコードを自分の<code>static/css/style.css</code>に書き加える．</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-css" data-lang="css"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span style="color:#60a0b0;font-style:italic">/* Background */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> { <span style="color:#007020;font-weight:bold">background-color</span>: <span style="color:#40a070">#f0f0f0</span> }
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span style="color:#60a0b0;font-style:italic">/* Error */</span> .<span style="color:#0e84b5;font-weight:bold">chroma</span> .<span style="color:#0e84b5;font-weight:bold">err</span> {  }
@@ -278,32 +292,62 @@ syntax highlightを有効にするには<code>config.toml</code>に以下を書�
 
 <p>Reading timeを<code>layouts/partials/post_meta.html</code>の最後に付け加えた．</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>{{ if not .Site.Params.disableReadingTime }}  　~ {{ .ReadingTime }} minute read ~{{ end }}</code></pre></div>
-<h2 id="disqusの導入">Disqusの導入</h2>
-
 <h2 id="github-pagesの設定">GitHub Pagesの設定</h2>
 
-<p>以下のサイトを参考に行った．
-<a href="http://kohki.hatenablog.jp/entry/hugo-portfolio">Hugo + GitHub Pagesでポートフォリオを作る - プログラミングで世界を変える</a></p>
+<p>Hugo公式のページ(<a href="https://gohugo.io/hosting-and-deployment/hosting-on-github/">Host on GitHub | Hugo</a>)を参考にGitHub pagesの設定を行った．<br />
+GitHub Pagesには2種類のサイトの形式がある．</p>
 
-<p>Google analytics <br />
-google search console</p>
+<ol>
+<li>User/Organization Pages</li>
+<li>Project Pages</li>
+</ol>
+
+<table>
+<thead>
+<tr>
+<th align="center">用途</th>
+<th align="center">URL</th>
+<th align="center">レンダリング</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">User/Organization Pages</td>
+<td align="center">https://<USERNAME/ORGANIZATION>.github.io/</td>
+<td align="center">レポジトリ直下</td>
+</tr>
+
+<tr>
+<td align="center">Project Pages</td>
+<td align="center">https://<USERNAME/ORGANIZATION>.github.io/<PROJECT>/</td>
+<td align="center">docsフォルダ直下</td>
+</tr>
+</tbody>
+</table>
+
+<p>1.には<code>https://&lt;USERNAME|ORGANIZATION&gt;.github.io/</code>, 2.には<code>https://&lt;USERNAME|ORGANIZATION&gt;.github.io/&lt;PROJECT&gt;/</code>というurlが与えられる．
+GitHubでリポジトリを作る．</p>
+
+<!--
+## Google analytics \
+## google search console
+## Disqusの導入
+-->
 
 <h2 id="references">references</h2>
 
-<p>Hugoについて</p>
-
-<ul>
-<li><a href="https://www.youtube.com/watch?v=qtIqKaDlqXo&amp;list=PLLAZ4kZ9dFpOnyRlyS-liKL5ReHDcj4G3">Giraffe AcademyのHugo解説 playlist</a></li>
-</ul>
-
-<p>数式の表示</p>
-
-<ul>
-<li><a href="http://iimuz.github.io/post/2016/11/hugotex/">Hugoで数式を導入します | しさく</a></li>
-<li><a href="https://github.com/mathjax/MathJax/issues/984">Doesn&rsquo;t parse when there are more than one \sum or \inf in an equation · Issue #984 · mathjax/MathJax</a></li>
-<li><a href="https://divadnojnarg.github.io/blog/mathjax/">Setting MathJax with Hugo | Hi, I am David</a></li>
-<li><a href="https://pennbay.github.io/tech/mathjax.with.hugo/">Using MathJax With Hugo Mainroad</a></li>
-</ul>
+<dl>
+<dt>Hugoについて</dt>
+<dd><a href="https://www.youtube.com/watch?v=qtIqKaDlqXo&amp;list=PLLAZ4kZ9dFpOnyRlyS-liKL5ReHDcj4G3">Giraffe AcademyのHugo解説 playlist</a></dd>
+<dt>数式の表示</dt>
+<dd><a href="http://iimuz.github.io/post/2016/11/hugotex/">Hugoで数式を導入します | しさく</a></dd>
+<dd><a href="https://github.com/mathjax/MathJax/issues/984">Doesn&rsquo;t parse when there are more than one \sum or \inf in an equation · Issue #984 · mathjax/MathJax</a></dd>
+<dd><a href="https://divadnojnarg.github.io/blog/mathjax/">Setting MathJax with Hugo | Hi, I am David</a></dd>
+<dd><a href="https://pennbay.github.io/tech/mathjax.with.hugo/">Using MathJax With Hugo Mainroad</a></dd>
+<dt>その他</dt>
+<dd><a href="https://tkat0.github.io/blog/writing-blog-with-hugo-1/">Hugoでブログ作成</a></dd>
+</dl>
 
 		</div>
 		

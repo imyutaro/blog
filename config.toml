@@ -14,6 +14,8 @@ pygmentsStyle = "friendly"
 hasCJKLanguage = true # summaryの表示をいい感じにするやつ 参考:https://blog.awm.jp/2016/01/02/hugo/
 canonifyurls = true
 publishDir = "docs" #for github pages
+enableEmoji = true
+
 
 [Author] # Used in authorbox
   name = "YUTARO"
@@ -59,3 +61,6 @@ publishDir = "docs" #for github pages
   #social_telegram = "username"
   #social_email = "example@example.com"
   #social_google_plus = "profileid"
+
+[blackfriday]
+  extensions = ["DefinitionLists",]
