@@ -61,6 +61,3 @@ enableEmoji = true
   #social_telegram = "username"
   #social_email = "example@example.com"
   #social_google_plus = "profileid"
-
-[blackfriday]
-  extensions = ["DefinitionLists",]

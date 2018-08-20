@@ -55,6 +55,7 @@ $$
 `\sum_{}`の`_`(アンダースコア)の前に`\`(バックスラッシュ又は`¥`)を入れれば表示される．
 
 - [Setting MathJax with Hugo | Hi, I am David](https://divadnojnarg.github.io/blog/mathjax/)
+- [Supported Content Formats | Hugo](https://gohugo.io/content-management/formats/#solution)
 
 Atomでmarkdownのプレビューが出来るようにと思って上記の設定をしたが結局`_`を入れないといけないならKaTeXを使ったほうが良いかも?\
 KaTeXならshortcodeを使ったり数式があるときだけjsファイルを読み込んだりするから良いかもしれない，localhostでプレビューする必要があるけど．．．
@@ -230,19 +231,30 @@ Reading timeを`layouts/partials/post_meta.html`の最後に付け加えた．
 
 ## GitHub Pagesの設定
 Hugo公式のページ([Host on GitHub | Hugo](https://gohugo.io/hosting-and-deployment/hosting-on-github/))を参考にGitHub pagesの設定を行った．\
-GitHub Pagesには2種類のサイトの形式がある．
+GitHub Pagesには2種類のサイトの形式がある．サイトの形式によって与えられるURL，レンダリングされる場所が異なる．対応は以下のようになっている．
 
-1. User/Organization Pages
-2. Project Pages
-
-| 用途 | URL | レンダリング |
+| Type | URL | レンダリング場所 |
 | :---: | :---: | :---: |
-| User/Organization Pages | https://<USERNAME/ORGANIZATION>.github.io/ | レポジトリ直下 |
-| Project Pages | https://<USERNAME/ORGANIZATION>.github.io/<PROJECT>/ | docsフォルダ直下 |
+| User/Organization Pages | https://\<USERNAME/ORGANIZATION\>.github.io/ | レポジトリ直下 |
+| Project Pages | https://\<USERNAME/ORGANIZATION\>.github.io/\<PROJECT\>/ | docsフォルダ直下 |
 
-1.には`https://<USERNAME|ORGANIZATION>.github.io/`, 2.には`https://<USERNAME|ORGANIZATION>.github.io/<PROJECT>/`というurlが与えられる．
-GitHubでリポジトリを作る．
+\<USERNAME/ORGANIZATION\>にGitHubのアカウント名が入り，\<PROJECT\>には作成したリポジトリ名が入る．\
+生成元のファイルなどもgit管理したいのでProject Pagesの設定を行った．手順は以下の通り．
 
+1. GitHubでリポジトリを作成．（例としてリポジトリ名をblogとする．）
+2. `config.toml`に以下を追加する．
+    ```toml
+    baseurl = "https://<USERNAME/ORGANIZATION>.github.io/blog" # <USERNAME/ORGANIZATION>には自分のGitHubアカウントのユーザネーム．
+    publishDir = "docs"
+    ```
+
+3. hugoで作成したディレクトリで`hugo`, `git init`, `git add .`, `git commit -m "first commit"`をする．
+4. GitHubにpush．
+5. GitHubのリポジトリのところにある`Settings>GitHub Pages>Source`をmaster branch /docs folderにする．
+
+これで3.のhugoで生成されたdocs folder以下の静的サイトが公開される．
+
+ひとまずこれで公開する．Google analyticsやgoogle search console，Disqus(コメント)の導入，サイト内検索はまた今度．．．
 
 <!--
 ## Google analytics \
@@ -250,7 +262,6 @@ GitHubでリポジトリを作る．
 ## Disqusの導入
 -->
 ## references
-
 Hugoについて
 : [Giraffe AcademyのHugo解説 playlist](https://www.youtube.com/watch?v=qtIqKaDlqXo&list=PLLAZ4kZ9dFpOnyRlyS-liKL5ReHDcj4G3)
 

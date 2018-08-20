@@ -276,7 +276,7 @@ pre {
   /* 下4つを付け加えたらコードブロック内の縦横方向にスライドバーが表示された */
   /*white-space: pre;
   max-width: 650px;*/
-  max-height: 500px;
+  max-height: 505px;
   overflow: auto
   /* ------------------- */
 }
