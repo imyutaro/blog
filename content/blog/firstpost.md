@@ -252,9 +252,9 @@ GitHub Pagesには2種類のサイトの形式がある．サイトの形式に�
 4. GitHubにpush．
 5. GitHubのリポジトリのところにある`Settings>GitHub Pages>Source`をmaster branch /docs folderにする．
 
-これで3.のhugoで生成されたdocs folder以下の静的サイトが公開される．
+これで3.の`hugo`で生成されたdocs folder以下の静的サイトが公開される．
 
-ひとまずこれで公開する．Google analyticsやgoogle search console，Disqus(コメント)の導入，サイト内検索はまた今度．．．
+ひとまずこれで公開する．Google analyticsやgoogle search console，Disqus(コメント)の導入，サイト内検索，カスタムドメインはまた今度．．．
 
 <!--
 ## Google analytics \

@@ -1,6 +1,6 @@
 ---
 title: "Word2vecまとめ"
-date: 2018-08-10T23:58:30+09:00
+date: 2018-08-20T23:15:30+09:00
 description: "about word2vec"
 disable_comments: false # Optional, disable Disqus comments if true
 authorbox: false # Optional, enable authorbox for specific post
