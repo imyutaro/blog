@@ -276,7 +276,7 @@ pre {
   /* 下4つを付け加えたらコードブロック内の縦横方向にスライドバーが表示された */
   /*white-space: pre;
   max-width: 650px;*/
-  max-height: 500px;
+  max-height: 505px;
   overflow: auto
   /* ------------------- */
 }
@@ -344,30 +344,26 @@ address {
 	line-height: 1.5;
 }
 
+dl {
+	margin: 0 0 10px 20px;
+  margin-bottom: 30px;
+}
 
 dt,
 dd {
 	display: list-item;
 }
 
-dl,
-dd {
-  margin-bottom: 5px;
-}
-
-dl {
-	margin: 0 0 10px 20px;
-  margin-bottom: 30px;
-}
-
 dt {
 	font-weight: bold;
 	list-style-type: disc;
+  margin-top: 15px;
 }
 
 dd {
 	margin-left: 20px;
 	list-style-type: circle;
+  padding-bottom: 0px;
 }
 
 select {
