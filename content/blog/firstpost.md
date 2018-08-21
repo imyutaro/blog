@@ -125,7 +125,7 @@ var navigation = responsiveNav(".menu", {
 \end{align}
 式番号を表示させたくないところには`\nonumber`をつける．基本的にはLaTeXの数式の書き方だが，改行は`\`を6つ並べないといけない．
 
-### syntax highlightの設定
+### Syntax highlightの設定
 syntax highlightについては以下の記事を参考に行った．
 
 - [Syntax Highlighting | Hugo](https://gohugo.io/content-management/syntax-highlighting/)
@@ -261,7 +261,7 @@ GitHub Pagesには2種類のサイトの形式がある．サイトの形式に�
 ## google search console
 ## Disqusの導入
 -->
-## references
+## References
 Hugoについて
 : [Giraffe AcademyのHugo解説 playlist](https://www.youtube.com/watch?v=qtIqKaDlqXo&list=PLLAZ4kZ9dFpOnyRlyS-liKL5ReHDcj4G3)
 
@@ -270,6 +270,13 @@ Hugoについて
 : [Doesn't parse when there are more than one \sum or \inf in an equation · Issue #984 · mathjax/MathJax](https://github.com/mathjax/MathJax/issues/984)
 : [Setting MathJax with Hugo | Hi, I am David](https://divadnojnarg.github.io/blog/mathjax/)
 : [Using MathJax With Hugo Mainroad](https://pennbay.github.io/tech/mathjax.with.hugo/)
+
+Syntax highlight
+: [Syntax Highlighting | Hugo](https://gohugo.io/content-management/syntax-highlighting/)
+: [HugoでのシンタックスハイライトにPython Pygmentsが不要となった - SIS Lab](https://www.meganii.com/blog/2017/10/14/hugo-syntax-highlighting/)
+
+GitHub Pages
+: [Host on GitHub | Hugo](https://gohugo.io/hosting-and-deployment/hosting-on-github/)
 
 その他
 : [Hugoでブログ作成](https://tkat0.github.io/blog/writing-blog-with-hugo-1/)
