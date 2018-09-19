@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Nlp on あうとぷっと</title>
+    <link>https://imyutaro.github.io/blog/tags/nlp/</link>
+    <description>Recent content in Nlp on あうとぷっと</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Mon, 20 Aug 2018 23:15:30 +0900</lastBuildDate>
+    
+	<atom:link href="https://imyutaro.github.io/blog/tags/nlp/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Word2vecまとめ</title>
+      <link>https://imyutaro.github.io/blog/note/word2vec/</link>
+      <pubDate>Mon, 20 Aug 2018 23:15:30 +0900</pubDate>
+      
+      <guid>https://imyutaro.github.io/blog/note/word2vec/</guid>
+      <description>Word2vecは「周辺にある単語が似ている単語同士は意味も似ている」というハリスの分布仮説に基づき，ある単語から周辺単語を予測するSkip</description>
+    </item>
+    
+  </channel>
+</rss>

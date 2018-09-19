@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Word2vecまとめ</title>
+	<meta name="description" content="about word2vec">
+	<meta name="generator" content="Hugo 0.46" />
+	<meta property="og:title" content="Word2vecまとめ" />
+<meta property="og:description" content="about word2vec" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://imyutaro.github.io/blog/note/word2vec/" />
+
+
+
+<meta property="article:published_time" content="2018-08-20T23:15:30&#43;09:00"/>
+
+<meta property="article:modified_time" content="2018-08-20T23:15:30&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
+
+	<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Word2vecまとめ"/>
+<meta name="twitter:description" content="about word2vec"/>
+
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="https://imyutaro.github.io/blog/css/style.css">
+	<script type="text/javascript" src="https://imyutaro.github.io/blog/js/scripts.js"></script>
+	<link rel="shortcut icon" href="https://imyutaro.github.io/blog/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container-outer">
+		<header class="header">
+			<div class="container container-inner">
+				<div class="logo" role="banner">
+					<a class="logo__link" href="https://imyutaro.github.io/blog/" title="あうとぷっと" rel="home">
+						<div class="logo__title">あうとぷっと</div>
+						
+					</a>
+				</div>
+			</div>
+			<div class="divider"></div>
+		</header>
+		<div class="wrapper flex">
+
+
+<main class="main content">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Word2vecまとめ</h1><div class="post__meta meta">
+<svg class="icon icon-time" width="16" height="14" viewBox="0 0 16 16"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+<time class="post__meta-date meta-date" datetime="2018-08-20T23:15:30">August 20, 2018</time>
+<span class="post__meta-categories meta-categories">
+	<svg class="icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta-categories__list"><a class="meta-categories__link" href="https://imyutaro.github.io/blog/categories/note" rel="category">NOTE</a></span>
+</span>
+  　~ 7 minute read ~
+</div>
+		</header>
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#前処理">前処理</a></li>
+<li><a href="#skip-gramモデル">Skip-gramモデル</a>
+<ul>
+<li><a href="#順伝播の計算">順伝播の計算</a></li>
+</ul></li>
+<li><a href="#negative-sampling">Negative Sampling</a>
+<ul>
+<li><a href="#共起する単語と共起しない単語の変数について考える必要あり">共起する単語と共起しない単語の変数について考える必要あり．</a></li>
+</ul></li>
+<li><a href="#自分の考え">自分の考え</a></li>
+<li><a href="#references">References</a></li>
+</ul></li>
+</ul>
+</nav>
+	</div>
+</div>
+<div class="post__content clearfix">
+			
+
+<p>Word2vecは「周辺にある単語が似ている単語同士は意味も似ている」というハリスの分布仮説に基づき，ある単語から周辺単語を予測するSkip-gram(SG)モデルと周辺単語からある単語を予測するContinuous Bag of Words(CBOW)モデルの2種類あります．ネットワークの構造は入力層-&gt;中間層-&gt;出力層の(入力層は数えないから)2層のニューラルネットワークからなります．word2vecに関してはわかりやすい記事があるが自分の頭の中の整理のためblogにまとめるることにしました．ちなみにわかりやすい記事というのは</p>
+
+<ul>
+<li><p>概要を掴むだけなら<br />
+<a href="http://www.randpy.tokyo/entry/word2vec_skip_gram_model">word2vec（Skip-Gram Model）の仕組みを恐らく日本一簡潔にまとめてみたつもり - これで無理なら諦めて！世界一やさしいデータ分析教室</a></p></li>
+
+<li><p>数式も含めて詳しく知りたいなら<br />
+<a href="http://tkengo.github.io/blog/2016/05/09/understand-how-to-learn-word2vec/">Word2Vec のニューラルネットワーク学習過程を理解する · けんごのお屋敷</a></p></li>
+</ul>
+
+<p>以下に自分のまとめを書いていきます．</p>
+
+<h2 id="前処理">前処理</h2>
+
+<p>Word2vecモデルを学習させるためには単語をone-hotベクトルというベクトルにする必要があります．このone-hotベクトルをモデルの入力にします．</p>
+
+<h2 id="skip-gramモデル">Skip-gramモデル</h2>
+
+<p>Skip-gramモデルは1つの単語に対して周辺の単語を予測するモデルで最大化すべき目的関数(損失関数)は以下の式\eqref{eq:maximize_func}です．
+\begin{align}
+  \sum_{t=1}^{T} \sum_{-c \le j \le c, j\neq 0} \log p(w_{t+j}|w_t)
+  \label{eq:maximize_func}
+\end{align}
+また式\eqref{eq:maximize_func}内の条件付き確率は式\eqref{eq:conditional_probability}で表される．
+\begin{align}
+  p(w_{t+j}|w_t)=\frac{\exp \left(v_t^{\mathrm{T}}\; v_{t+j}\right)}{\sum_{k=1}^{|V|}\exp \left(v_t^{\mathrm{T}}\; v_k\right)}
+  \label{eq:conditional_probability}
+\end{align}
+式を見やすくするため式\eqref{eq:maximize_func}の$w_{t+j}$を式\eqref{eq:conditional_probability}の$w_c$にしています．</p>
+
+<ul>
+<li><p><strong>変数について</strong><br />
+式\eqref{eq:maximize_func}，式\eqref{eq:conditional_probability}中の変数について，$c$はwindowサイズ．注目する単語から$2\times c$個の周辺単語を学習の際に用います．$w_t$は注目している単語，$w_{t+j}$は$w_t$の周辺単語．つまり，注目している単語$w_t$の前後$c$個ずつ，合計$2\times c$個の単語が周辺単語$w_{t+j}$となります．$v_t$は単語$w_t$を表す特徴ベクトル．$v_{t+j}$は周辺単語$w_{t+j}$を表す特徴ベクトル．$V$は全単語の集合．$|V|$はすべての単語数，$T$は文書中の単語の総数(重複含む)を表します．この変数の中の単語の特徴ベクトルを学習で求めます．また，この特徴ベクトルのことを「分散表現」や「埋め込みベクトル(Embedding vector)」といったりします．</p></li>
+
+<li><p><strong>式の意味</strong><br />
+上記の式\eqref{eq:maximize_func}は文章中に単語$w_t$があったとき単語$w_{t+j}$($w_t$の前後の単語)が出現する確率を表している．つまり，文章中に並んで出現しているのでこの確率を大きくしたい．式\eqref{eq:conditional_probability}の分母は全単語のベクトル$v_k$と注目単語のベクトル$v_t$の内積をeの肩に乗せたもの．分子は周辺単語のベクトル$v_{t+j}$と注目単語のベクトル$v_t$の内積をeの肩に乗せたもの．これは注目単語が出現したとき，共起した単語ベクトル(周辺単語ベクトル)が出現する確率(条件付き確率)を表している．式\eqref{eq:maximize_func}を最大化するというのは共起している単語のベクトル同士の値を高くするということである．</p></li>
+</ul>
+
+<p>この計算は大変なので階層的softmaxや<a href="https://imyutaro.github.io/blog/note/word2vec/#negative-sampling">Negative sampling</a>によって学習する際の計算コストを削減する．<br />
+なぜ現実的でないかというと，単語の種類が例えば10,000単語だとする($|V| = 10,000$)．</p>
+
+
+<figure class="center">
+    
+        <img src="https://imyutaro.github.io/blog/img/word2vec_sikpgram.png" alt="Skip-gram model." width="40%" />
+    
+    
+    <figcaption>
+        <p>
+        Skip-gram model.
+        
+            
+        
+        </p> 
+    </figcaption>
+    
+</figure>
+
+
+<h3 id="順伝播の計算">順伝播の計算</h3>
+
+<p>具体的な順伝播の計算を以下に書く．1単語から1単語を予測する図のようなCBOWのモデルを簡単のため考える．</p>
+
+
+<figure class="center">
+    
+        <img src="https://imyutaro.github.io/blog/img/word2vec_simpleCBOW.png" alt="Simple Skip-gram model." width="50%" />
+    
+    
+    <figcaption>
+        <p>
+        Simple Skip-gram model.
+        
+            
+        
+        </p> 
+    </figcaption>
+    
+</figure>
+
+
+<p>変数について説明する．$|V|$は全単語の数，$c$はwindowサイズ，$N$は中間層の次元．入力ベクトル$\boldsymbol{x}={x_1, x_2, \cdots, x_{|V|}}$はone-hotベクトル．one-hotベクトルとはある1つの$x_k$に対して1の値を取り，それ以外の$x_{k&rsquo;}$では0を取るようなベクトルである($x_k=1, x_{k&rsquo;}=0 \;\; \rm{for} \;\; k\neq k&rsquo;$)．
+入力層と中間層の間の重み行列は$|V|\times N$行列である．それぞれの行は$N$次元のベクトル$\boldsymbol{v}_{w}$であり，$\boldsymbol{v}_{w}$は入力層の単語$w$に対応したベクトルである．</p>
+
+<h2 id="negative-sampling">Negative Sampling</h2>
+
+<h3 id="共起する単語と共起しない単語の変数について考える必要あり">共起する単語と共起しない単語の変数について考える必要あり．</h3>
+
+<p>$w_c$とか$w_r$とか．．．</p>
+
+<p>skip-gramモデルをベースとした学習の計算をより効率的に行う手法である．基本的な考え方は注目している単語と単語の集合からランダムにとってきた単語のうち，windowサイズの範囲内にある単語(注目している単語とよく共起する単語)については確率が高く，それ以外の単語については共起<strong>しない</strong>確率が高くなるような目的関数を設定しその関数を最大化するように学習する．</p>
+
+<p>注目する単語$w_t$が単語$w_c$と共起している確率(windowサイズ内に出現する確率)を$p(w_c|w_t)$と表すと，$w_c$が共起しない確率は$1-p(w_c|w_t)$と表せる．$p(w_c|w_t)$をsigmoid関数で表すと$p(w_c|w_t)$は以下のように表せる．
+\begin{align}
+  p(w_c|w_t) = \sigma(v_t^{\mathrm{T}} \; v_c) = \frac{1}{1+\exp (-v_t^{\mathrm{T}} \; v_c)} \nonumber
+\end{align}</p>
+
+<p>よって$w_c$が共起しない確率$1-p(w_c|w_t)$は以下のようになる．
+\begin{align}
+  1-p(w_c|w_t) = 1-\sigma(v_t^{\mathrm{T}} \; v_c) &amp;= 1-\frac{1}{1+\exp (-v_t^{\mathrm{T}} \; v_c)} \nonumber \\<br />
+  &amp;=\frac{1 + \exp (-v_t^{\mathrm{T}} \; v_c) -1}{1+\exp (-v_t^{\mathrm{T}} \; v_c)} \nonumber \\<br />
+  &amp;=\frac{\exp (-v_t^{\mathrm{T}} \; v_c)}{1+\exp (-v_t^{\mathrm{T}} \; v_c)} \nonumber \\<br />
+  &amp;=\frac{1}{\exp (v_t^{\mathrm{T}} \; v_c)+1} \nonumber \\<br />
+  &amp;=\frac{1}{1+\exp (v_t^{\mathrm{T}} \; v_c)} \nonumber \\<br />
+  &amp;\Bigl( =\sigma(-v_t^{\mathrm{T}} \; v_c) \Bigr) \nonumber
+\end{align}</p>
+
+<p>これらを用い，新たに以下の式\eqref{eq:new_maximize_func}を目的関数に設定する．
+\begin{align}
+  &amp;-\log p(w_c|w_t)\prod_{w_r \, \in V_{neg}}(1-p(w_r|w_t)) \nonumber\\<br />
+  \Leftrightarrow &amp;-\log \sigma(v_t^{\mathrm{T}} \; v_c)\prod_{w_r \, \in V_{neg}}(1-\sigma(v_t^{\mathrm{T}} \; v_r)) \nonumber\\<br />
+  \Leftrightarrow &amp;-\left(\log \sigma(v_t^{\mathrm{T}} \; v_c) + \log \prod_{w_r \, \in V_{neg}}(1-\sigma(v_t^{\mathrm{T}} \; v_r)) \right) \nonumber\\<br />
+  \Leftrightarrow &amp;-\left(\log \sigma(v_t^{\mathrm{T}} \; v_c) + \sum_{w_r \, \in V_{neg}}\log (1-\sigma(v_t^{\mathrm{T}} \; v_r)) \right) \nonumber\\<br />
+  \Leftrightarrow &amp;-\left(\log \sigma(v_t^{\mathrm{T}} \; v_c) + \sum_{w_r \, \in V_{neg}}\log \sigma(-v_t^{\mathrm{T}} \; v_r) \right) \nonumber\\<br />
+  \Leftrightarrow &amp;-\log \sigma(v_t^{\mathrm{T}} \; v_c) - \sum_{w_r \, \in V_{neg}}\log \sigma(-v_t^{\mathrm{T}} \; v_r)
+  \label{eq:new_maximize_func}
+\end{align}</p>
+
+<p>$V_{neg}$は注目する単語と共起しない単語の集合．つまりwindowサイズの外から選ばれた単語．この目的関数を最大化するということは，注目する単語$w_t$と共起する単語$w_c$についての確率は大きくし，注目する単語と共起しない単語$w_r$に対しての確率は小さくするような操作である．</p>
+
+<h2 id="自分の考え">自分の考え</h2>
+
+<p>word2vecはある単語のベクトルをよく共起している単語同士で近似している(Autoencoderと同じネットワーク構造のため)．そのため，よくある例の<code>king - man + woman = queen</code></p>
+
+<h2 id="references">References</h2>
+
+<ul>
+<li><a href="http://arxiv.org/abs/1402.3722">Distributed Representations of Words and Phrases and their Compositionality</a><br /></li>
+<li><a href="http://arxiv.org/abs/1402.3722">Yoav Goldberg and Omer Levy, word2vec Explained: deriving Mikolov et al.&rsquo;s negative-sampling word-embedding method</a><br /></li>
+<li><a href="http://www.claudiobellei.com/2018/01/06/backprop-word2vec/">The backpropagation algorithm for Word2Vec | Marginalia</a><br /></li>
+<li><a href="http://adventuresinmachinelearning.com/word2vec-keras-tutorial/">A Word2Vec Keras tutorial - Adventures in Machine Learning</a><br /></li>
+<li><a href="http://www.1-4-5.net/~dmm/ml/how_does_word2vec_work.pdf">David Meyer, How exactly does word2vec work?</a><br /></li>
+<li><a href="http://www.randpy.tokyo/entry/word2vec_skip_gram_model">word2vec（Skip-Gram Model）の仕組みを恐らく日本一簡潔にまとめてみたつもり - これで無理なら諦めて！世界一やさしいデータ分析教室</a><br /></li>
+<li><a href="http://tkengo.github.io/blog/2016/05/09/understand-how-to-learn-word2vec/">Word2Vec のニューラルネットワーク学習過程を理解する · けんごのお屋敷</a><br /></li>
+<li><a href="https://qiita.com/mash0510/items/347964f3eb2e080ea7a4#%EF%BC%92%EF%BC%93-%E9%AB%98%E9%80%9F%E5%8C%96%E3%81%AE%E6%89%8B%E6%B3%95negative-sampling">word2vecのソースを読んでみた</a><br /></li>
+</ul>
+
+		</div>
+		
+<div class="post__tags tags clearfix">
+	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16"><path d="M16 9.5c0 .373-.24.74-.5 1l-5 5c-.275.26-.634.5-1 .5-.373 0-.74-.24-1-.5L1 8a2.853 2.853 0 0 1-.7-1C.113 6.55 0 5.973 0 5.6V1.4C0 1.034.134.669.401.401.67.134 1.034 0 1.4 0h4.2c.373 0 .95.113 1.4.3.45.187.732.432 1 .7l7.5 7.502c.26.274.5.632.5.998zM3.5 5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link btn" href="https://imyutaro.github.io/blog/tags/nlp/" rel="tag">NLP</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="https://imyutaro.github.io/blog/tags/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/" rel="tag">機械学習</a></li>
+	</ul>
+</div>
+	</article>
+	
+	
+	
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "u-yutary" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+</main>
+
+
+<aside class="sidebar">
+	
+<div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+		<label>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="https://imyutaro.github.io/blog" />
+	</form>
+</div>
+
+	
+<div class="widget-recent widget">
+	<h4 class="widget__title">Recent Posts</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="https://imyutaro.github.io/blog/lang/python_copy/">Python，numpyのCopyについて</a></li>
+			<li class="widget__item"><a class="widget__link" href="https://imyutaro.github.io/blog/note/word2vec/">Word2vecまとめ</a></li>
+			<li class="widget__item"><a class="widget__link" href="https://imyutaro.github.io/blog/blog/firstpost/">Hugo&#43;GitHub Pagesでblog作成</a></li>
+		</ul>
+	</div>
+</div>
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">Categories</h4>
+	<div class="widget__content" style="text-transform: uppercase;">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="https://imyutaro.github.io/blog/categories/blog">Blog</a></li>
+			<li class="widget__item"><a class="widget__link" href="https://imyutaro.github.io/blog/categories/lang">Lang</a></li>
+			<li class="widget__item"><a class="widget__link" href="https://imyutaro.github.io/blog/categories/note">Note</a></li>
+		</ul>
+	</div>
+</div>
+
+	
+<div class="widget-social widget">
+	<h4 class="widget-social__title widget__title">Social</h4>
+	<div class="widget-social__content widget__content">
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="Twitter" rel="noopener noreferrer" href="https://twitter.com/u_yutary" target="_blank">
+				<svg class="widget-social__link-icon icon-twitter" viewBox="0 0 384 312" width="24" height="24" fill="#fff"><path d="m384 36.9c-14.1 6.3-29.3 10.5-45.2 12.4 16.3-9.7 28.8-25.2 34.6-43.6-15.2 9-32.1 15.6-50 19.1-14.4-15.2-34.9-24.8-57.5-24.8-43.5 0-78.8 35.3-78.8 78.8 0 6.2.7 12.2 2 17.9-65.5-3.3-123.5-34.6-162.4-82.3-6.7 11.6-10.6 25.2-10.6 39.6 0 27.3 13.9 51.4 35 65.6-12.9-.4-25.1-4-35.7-9.9v1c0 38.2 27.2 70 63.2 77.2-6.6 1.8-13.6 2.8-20.8 2.8-5.1 0-10-.5-14.8-1.4 10 31.3 39.1 54.1 73.6 54.7-27 21.1-60.9 33.7-97.8 33.7-6.4 0-12.6-.4-18.8-1.1 34.9 22.4 76.3 35.4 120.8 35.4 144.9 0 224.1-120 224.1-224.1 0-3.4-.1-6.8-.2-10.2 15.4-11.1 28.7-25 39.3-40.8z"/></svg>
+				<span>Twitter</span>
+			</a>
+		</div>
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="GitHub" rel="noopener noreferrer" href="https://github.com/imyutaro" target="_blank">
+				<svg class="widget-social__link-icon icon-github" viewBox="0 0 384 374" width="24" height="24" fill="#fff"><path d="m192 0c-106.1 0-192 85.8-192 191.7 0 84.7 55 156.6 131.3 181.9 9.6 1.8 13.1-4.2 13.1-9.2 0-4.6-.2-16.6-.3-32.6-53.4 11.6-64.7-25.7-64.7-25.7-8.7-22.1-21.3-28-21.3-28-17.4-11.9 1.3-11.6 1.3-11.6 19.3 1.4 29.4 19.8 29.4 19.8 17.1 29.3 44.9 20.8 55.9 15.9 1.7-12.4 6.7-20.8 12.2-25.6-42.6-4.8-87.5-21.3-87.5-94.8 0-20.9 7.5-38 19.8-51.4-2-4.9-8.6-24.3 1.9-50.7 0 0 16.1-5.2 52.8 19.7 15.3-4.2 31.7-6.4 48.1-6.5 16.3.1 32.7 2.2 48.1 6.5 36.7-24.8 52.8-19.7 52.8-19.7 10.5 26.4 3.9 45.9 1.9 50.7 12.3 13.4 19.7 30.5 19.7 51.4 0 73.7-44.9 89.9-87.7 94.6 6.9 5.9 13 17.6 13 35.5 0 25.6-.2 46.3-.2 52.6 0 5.1 3.5 11.1 13.2 9.2 76.2-25.5 131.2-97.3 131.2-182 0-105.9-86-191.7-192-191.7z"/></svg>
+				<span>GitHub</span>
+			</a>
+		</div>
+	</div>
+</div>
+	
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Tags</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="https://imyutaro.github.io/blog/tags/nlp" title="Nlp">Nlp (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="https://imyutaro.github.io/blog/tags/others" title="Others">Others (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="https://imyutaro.github.io/blog/tags/python" title="Python">Python (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="https://imyutaro.github.io/blog/tags/%e6%a9%9f%e6%a2%b0%e5%ad%a6%e7%bf%92" title="機械学習">機械学習 (1)</a>
+	</div>
+</div>
+
+</aside>
+	</div>
+		<footer class="footer">
+			<div class="container container-inner">
+				<div class="footer__copyright">&copy; 2018 あうとぷっと. <span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span></div>
+			</div>
+		</footer>
+	</div>
+
+<script>
+	var navigation = responsiveNav(".menu", {
+		navClass: "menu--collapse",
+	});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Config({
+  // Autonumbering by mathjax
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+
+</body>
+</html>
+

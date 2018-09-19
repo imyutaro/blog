@@ -2,7 +2,7 @@
 title: "Hugo+GitHub Pagesでblog作成"
 date: 2018-08-10T21:16:24+09:00
 description: ""
-disable_comments: true # Optional, disable Disqus comments if true
+disable_comments: false # Optional, disable Disqus comments if true
 authorbox: false # Optional, enable authorbox for specific post
 toc: true # Optional, enable Table of Contents for specific post
 mathjax: true # Optional, enable MathJax for specific post
@@ -284,4 +284,10 @@ GitHub Pages
 <!--
 listのネストについてhtmlに変換したら何故か<p>タグが入ってしまう問題
 [同じissue](https://github.com/russross/blackfriday/issues/235)
+
+サイト内全文検索
+https://snap.textgh.org/201801152012/
+
+ソーシャルボタンについて
+https://aakira.app/blog/2018/08/share/
 -->

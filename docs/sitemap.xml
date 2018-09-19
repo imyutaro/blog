@@ -3,6 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://imyutaro.github.io/blog/lang/python_copy/</loc>
+    <lastmod>2018-08-29T14:16:57+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://imyutaro.github.io/blog/note/word2vec/</loc>
+    <lastmod>2018-08-20T23:15:30+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://imyutaro.github.io/blog/blog/firstpost/</loc>
     <lastmod>2018-08-10T21:16:24+09:00</lastmod>
   </url>
@@ -26,20 +36,62 @@
   </url>
   
   <url>
+    <loc>https://imyutaro.github.io/blog/categories/lang/</loc>
+    <lastmod>2018-08-29T14:16:57+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://imyutaro.github.io/blog/lang/</loc>
+    <lastmod>2018-08-29T14:16:57+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://imyutaro.github.io/blog/tags/nlp/</loc>
+    <lastmod>2018-08-20T23:15:30+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://imyutaro.github.io/blog/categories/note/</loc>
+    <lastmod>2018-08-20T23:15:30+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://imyutaro.github.io/blog/note/</loc>
+    <lastmod>2018-08-20T23:15:30+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://imyutaro.github.io/blog/tags/others/</loc>
     <lastmod>2018-08-10T21:16:24+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
+    <loc>https://imyutaro.github.io/blog/tags/python/</loc>
+    <lastmod>2018-08-29T14:16:57+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://imyutaro.github.io/blog/tags/</loc>
-    <lastmod>2018-08-10T21:16:24+09:00</lastmod>
+    <lastmod>2018-08-20T23:15:30+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://imyutaro.github.io/blog/</loc>
-    <lastmod>2018-08-10T21:16:24+09:00</lastmod>
+    <lastmod>2018-08-29T14:16:57+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://imyutaro.github.io/blog/tags/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/</loc>
+    <lastmod>2018-08-20T23:15:30+09:00</lastmod>
     <priority>0</priority>
   </url>
   

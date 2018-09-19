@@ -6,10 +6,28 @@
     <description>Recent content on あうとぷっと</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Fri, 10 Aug 2018 21:16:24 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 29 Aug 2018 14:16:57 +0900</lastBuildDate>
     
 	<atom:link href="https://imyutaro.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Python，numpyのCopyについて</title>
+      <link>https://imyutaro.github.io/blog/lang/python_copy/</link>
+      <pubDate>Wed, 29 Aug 2018 14:16:57 +0900</pubDate>
+      
+      <guid>https://imyutaro.github.io/blog/lang/python_copy/</guid>
+      <description>pyhtonのライブラリnumpyを使っていたとき普通に変数を代入するだけだと同じオブジェクトを指すようになってしまうのでnumpy.cop</description>
+    </item>
+    
+    <item>
+      <title>Word2vecまとめ</title>
+      <link>https://imyutaro.github.io/blog/note/word2vec/</link>
+      <pubDate>Mon, 20 Aug 2018 23:15:30 +0900</pubDate>
+      
+      <guid>https://imyutaro.github.io/blog/note/word2vec/</guid>
+      <description>Word2vecは「周辺にある単語が似ている単語同士は意味も似ている」というハリスの分布仮説に基づき，ある単語から周辺単語を予測するSkip</description>
+    </item>
     
     <item>
       <title>Hugo&#43;GitHub Pagesでblog作成</title>

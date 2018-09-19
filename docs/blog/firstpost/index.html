@@ -371,6 +371,12 @@ GitHub Pagesには2種類のサイトの形式がある．サイトの形式に�
 <!--
 listのネストについてhtmlに変換したら何故か<p>タグが入ってしまう問題
 [同じissue](https://github.com/russross/blackfriday/issues/235)
+
+サイト内全文検索
+https://snap.textgh.org/201801152012/
+
+ソーシャルボタンについて
+https://aakira.app/blog/2018/08/share/
 -->
 
 		</div>
@@ -385,6 +391,29 @@ listのネストについてhtmlに変換したら何故か<p>タグが入って
 	
 	
 	
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "u-yutary" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
 </main>
 
 
@@ -405,6 +434,8 @@ listのネストについてhtmlに変換したら何故か<p>タグが入って
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="https://imyutaro.github.io/blog/lang/python_copy/">Python，numpyのCopyについて</a></li>
+			<li class="widget__item"><a class="widget__link" href="https://imyutaro.github.io/blog/note/word2vec/">Word2vecまとめ</a></li>
 			<li class="widget__item"><a class="widget__link" href="https://imyutaro.github.io/blog/blog/firstpost/">Hugo&#43;GitHub Pagesでblog作成</a></li>
 		</ul>
 	</div>
@@ -415,6 +446,8 @@ listのネストについてhtmlに変換したら何故か<p>タグが入って
 	<div class="widget__content" style="text-transform: uppercase;">
 		<ul class="widget__list">
 			<li class="widget__item"><a class="widget__link" href="https://imyutaro.github.io/blog/categories/blog">Blog</a></li>
+			<li class="widget__item"><a class="widget__link" href="https://imyutaro.github.io/blog/categories/lang">Lang</a></li>
+			<li class="widget__item"><a class="widget__link" href="https://imyutaro.github.io/blog/categories/note">Note</a></li>
 		</ul>
 	</div>
 </div>
@@ -441,7 +474,10 @@ listのネストについてhtmlに変換したら何故か<p>タグが入って
 <div class="widget-taglist widget">
 	<h4 class="widget__title">Tags</h4>
 	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="https://imyutaro.github.io/blog/tags/nlp" title="Nlp">Nlp (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="https://imyutaro.github.io/blog/tags/others" title="Others">Others (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="https://imyutaro.github.io/blog/tags/python" title="Python">Python (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="https://imyutaro.github.io/blog/tags/%e6%a9%9f%e6%a2%b0%e5%ad%a6%e7%bf%92" title="機械学習">機械学習 (1)</a>
 	</div>
 </div>
 
