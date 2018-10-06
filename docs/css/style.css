@@ -681,6 +681,20 @@ select {
 	margin-bottom: 5px;
 }
 
+/* ---自分で追加--- */
+.post__content pre {
+  /* 下4つを付け加えたらコードブロック内の縦横方向にスライドバーが表示された */
+  /*widthについて https://coliss.com/articles/build-websites/operation/css/width-and-max-width.html*/
+  /*widthについて "スクロール css width 指定の仕方"で調べるといいかも*/
+  white-space: pre;
+  max-width: 650px;
+  width: 100%;
+  max-height: 505px;
+  height: 100%;
+  overflow: auto;
+}
+/* ------ */
+
 .tags {
 	margin-bottom: 20px;
 	margin-bottom: 1.25rem;

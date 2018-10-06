@@ -249,7 +249,10 @@ GitHub Pagesには2種類のサイトの形式がある．サイトの形式に�
 
 1. GitHubでリポジトリを作成．（例としてリポジトリ名をblogとする．）
 2. `config.toml`に以下を追加する．
-    
+    ```toml
+    baseurl = "https://<USERNAME/ORGANIZATION>.github.io/blog" # <USERNAME/ORGANIZATION>には自分のGitHubアカウントのユーザネーム．
+    publishDir = "docs"
+    ```
 
 3. hugoで作成したディレクトリで`hugo`, `git init`, `git add .`, `git commit -m "first commit"`をする．
 4. GitHubにpush．

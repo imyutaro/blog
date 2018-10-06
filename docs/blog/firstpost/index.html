@@ -336,7 +336,9 @@ GitHub Pagesには2種類のサイトの形式がある．サイトの形式に�
 <ol>
 <li>GitHubでリポジトリを作成．（例としてリポジトリ名をblogとする．）</li>
 
-<li><p><code>config.toml</code>に以下を追加する．</p></li>
+<li><p><code>config.toml</code>に以下を追加する．</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>baseurl = <span style="color:#4070a0">&#34;https://&lt;USERNAME/ORGANIZATION&gt;.github.io/blog&#34;</span> <span style="color:#60a0b0;font-style:italic"># &lt;USERNAME/ORGANIZATION&gt;には自分のGitHubアカウントのユーザネーム．</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span>publishDir = <span style="color:#4070a0">&#34;docs&#34;</span></code></pre></div></li>
 
 <li><p>hugoで作成したディレクトリで<code>hugo</code>, <code>git init</code>, <code>git add .</code>, <code>git commit -m &quot;first commit&quot;</code>をする．</p></li>
 
