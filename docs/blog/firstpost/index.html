@@ -130,7 +130,7 @@
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span>&lt;/<span style="color:#062873;font-weight:bold">script</span>&gt;</code></pre></div>
 <p>数式表示は例えばこんな感じ
 $$
-\sum_{i=0}^N v_i
+\sum_{i=0}^N a_i
 $$</p>
 
 <p>上記の設定だと<code>\sum</code>が2回続くつまり，<code>\sum_{a=0}^A \sum_{b=0}^B</code>としたりしたらうまく表示できない．これは，<code>\prod</code>や <code>\int</code>などでも起こる． <br />
@@ -139,6 +139,13 @@ $$</p>
 <ul>
 <li><a href="https://divadnojnarg.github.io/blog/mathjax/">Setting MathJax with Hugo | Hi, I am David</a></li>
 <li><a href="https://gohugo.io/content-management/formats/#solution">Supported Content Formats | Hugo</a></li>
+</ul>
+
+<p>また，ベクトルのための太字は<code>\boldsymbol{}</code>を使う．</p>
+
+<ul>
+<li>$v_i, a_i, x_i$(通常)</li>
+<li>$\boldsymbol{v}_i, \boldsymbol{a}_i, \boldsymbol{x}_i$  (太字)</li>
 </ul>
 
 <p>Atomでmarkdownのプレビューが出来るようにと思って上記の設定をしたが結局<code>_</code>を入れないといけないならKaTeXを使ったほうが良いかも?<br />

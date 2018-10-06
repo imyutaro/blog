@@ -76,16 +76,18 @@
 <ul>
 <li>
 <ul>
+<li><a href="#理論的な話">理論的な話</a></li>
+<li><a href="#どうモデル化するか">どうモデル化するか</a>
+<ul>
 <li><a href="#前処理">前処理</a></li>
 <li><a href="#skip-gramモデル">Skip-gramモデル</a>
 <ul>
 <li><a href="#順伝播の計算">順伝播の計算</a></li>
 </ul></li>
-<li><a href="#negative-sampling">Negative Sampling</a>
-<ul>
+<li><a href="#negative-sampling">Negative Sampling</a></li>
 <li><a href="#共起する単語と共起しない単語の変数について考える必要あり">共起する単語と共起しない単語の変数について考える必要あり．</a></li>
 </ul></li>
-<li><a href="#自分の考え">自分の考え</a></li>
+<li><a href="#memo">memo</a></li>
 <li><a href="#references">References</a></li>
 </ul></li>
 </ul>
@@ -105,20 +107,46 @@
 <a href="http://tkengo.github.io/blog/2016/05/09/understand-how-to-learn-word2vec/">Word2Vec のニューラルネットワーク学習過程を理解する · けんごのお屋敷</a></p></li>
 </ul>
 
-<p>以下に自分のまとめを書いていきます．</p>
+<p>以下に自分のまとめを書いていきます．
+<br />
+<br />
+<br />
+</p>
 
-<h2 id="前処理">前処理</h2>
+<h2 id="理論的な話">理論的な話</h2>
+
+<hr />
+
+<p>上記に書いたとおりword2vecはハリスの分布仮説に基づいて注目単語があったときに周辺単語がある確率(条件付き確率)を最大化するといったことをしてベクトルを作っています．具体的な数式は以下のようになっています．</p>
+
+<p>\begin{align}
+  P(C_t|w_t) &amp;= \prod_{c_i \in C_t} p(c_i|w_t) \\<br />
+  &amp;= p(c_1 \land c_2 \cdots \land c_n | w_t) \\<br />
+  &amp;= p(c_1|w_t) \times p(c_2|w_t) \times \cdots \times p(c_n|w_t) \\<br />
+\end{align}</p>
+
+<p>実際は単語の共起関係に独立性は成り立たないので上記の式のようにならないのですが計算の簡略化のために一般に独立であると仮定されて計算しています．
+<br />
+<br />
+<br />
+</p>
+
+<h2 id="どうモデル化するか">どうモデル化するか</h2>
+
+<hr />
+
+<h3 id="前処理">前処理</h3>
 
 <p>Word2vecモデルを学習させるためには単語をone-hotベクトルというベクトルにする必要があります．このone-hotベクトルをモデルの入力にします．</p>
 
-<h2 id="skip-gramモデル">Skip-gramモデル</h2>
+<h3 id="skip-gramモデル">Skip-gramモデル</h3>
 
 <p>Skip-gramモデルは1つの単語に対して周辺の単語を予測するモデルで最大化すべき目的関数(損失関数)は以下の式\eqref{eq:maximize_func}です．
 \begin{align}
   \sum_{t=1}^{T} \sum_{-c \le j \le c, j\neq 0} \log p(w_{t+j}|w_t)
   \label{eq:maximize_func}
 \end{align}
-また式\eqref{eq:maximize_func}内の条件付き確率は式\eqref{eq:conditional_probability}で表される．
+また式\eqref{eq:maximize_func}内の条件付き確率は式\eqref{eq:conditional_probability}で表されます．
 \begin{align}
   p(w_{t+j}|w_t)=\frac{\exp \left(v_t^{\mathrm{T}}\; v_{t+j}\right)}{\sum_{k=1}^{|V|}\exp \left(v_t^{\mathrm{T}}\; v_k\right)}
   \label{eq:conditional_probability}
@@ -154,7 +182,7 @@
 </figure>
 
 
-<h3 id="順伝播の計算">順伝播の計算</h3>
+<h4 id="順伝播の計算">順伝播の計算</h4>
 
 <p>具体的な順伝播の計算を以下に書く．1単語から1単語を予測する図のようなCBOWのモデルを簡単のため考える．</p>
 
@@ -179,7 +207,7 @@
 <p>変数について説明する．$|V|$は全単語の数，$c$はwindowサイズ，$N$は中間層の次元．入力ベクトル$\boldsymbol{x}={x_1, x_2, \cdots, x_{|V|}}$はone-hotベクトル．one-hotベクトルとはある1つの$x_k$に対して1の値を取り，それ以外の$x_{k&rsquo;}$では0を取るようなベクトルである($x_k=1, x_{k&rsquo;}=0 \;\; \rm{for} \;\; k\neq k&rsquo;$)．
 入力層と中間層の間の重み行列は$|V|\times N$行列である．それぞれの行は$N$次元のベクトル$\boldsymbol{v}_{w}$であり，$\boldsymbol{v}_{w}$は入力層の単語$w$に対応したベクトルである．</p>
 
-<h2 id="negative-sampling">Negative Sampling</h2>
+<h3 id="negative-sampling">Negative Sampling</h3>
 
 <h3 id="共起する単語と共起しない単語の変数について考える必要あり">共起する単語と共起しない単語の変数について考える必要あり．</h3>
 
@@ -215,9 +243,23 @@
 
 <p>$V_{neg}$は注目する単語と共起しない単語の集合．つまりwindowサイズの外から選ばれた単語．この目的関数を最大化するということは，注目する単語$w_t$と共起する単語$w_c$についての確率は大きくし，注目する単語と共起しない単語$w_r$に対しての確率は小さくするような操作である．</p>
 
-<h2 id="自分の考え">自分の考え</h2>
+<p><br />
+<br />
+<br />
+</p>
 
-<p>word2vecはある単語のベクトルをよく共起している単語同士で近似している(Autoencoderと同じネットワーク構造のため)．そのため，よくある例の<code>king - man + woman = queen</code></p>
+<h2 id="memo">memo</h2>
+
+<hr />
+
+<p>word2vecはある単語のベクトルをよく共起している単語同士で近似している(Autoencoderと同じネットワーク構造のため)．そのため，よくある例の<code>king - man + woman = queen</code>ではkingとmanに共通するベクトル情報が落ち，その後womanのベクトル情報が加わるので結果的にqueenが出てきていると考えられる．
+\begin{align}
+  \boldsymbol{v}_{man} &amp;= \boldsymbol{a}_1 \nonumber \\<br />
+  \boldsymbol{v}_{woman} &amp;= \boldsymbol{a}_2 \nonumber \\<br />
+  \boldsymbol{v}_{king} &amp;= \boldsymbol{a}_1 + \boldsymbol{a}_3 + \boldsymbol{a}_4 \nonumber \\<br />
+  \boldsymbol{v}_{queen} &amp;= \boldsymbol{a}_2 + \boldsymbol{a}_3 + \boldsymbol{a}_4 \nonumber
+\end{align}
+例えば，word2vecで上のような学習がされているとすると<code>king - man + woman = queen</code>というのが求められるのがわかる．(実際はこんな簡単なベクトルで表されていないはず．．．)</p>
 
 <h2 id="references">References</h2>
 
