@@ -297,6 +297,7 @@ pre {
   /*white-space: pre;
   max-width: 650px;
   width: 100%;*/
+  /*.post__content pre に追加したらできた！*/
   max-height: 505px;
   overflow: auto;
   /* ------------------- */
@@ -683,9 +684,7 @@ select {
 
 /* ---自分で追加--- */
 .post__content pre {
-  /* 下4つを付け加えたらコードブロック内の縦横方向にスライドバーが表示された */
-  /*widthについて https://coliss.com/articles/build-websites/operation/css/width-and-max-width.html*/
-  /*widthについて "スクロール css width 指定の仕方"で調べるといいかも*/
+  /* 下のやつを付け加えたらコードブロック内の縦横方向にスライドバーが表示された */
   white-space: pre;
   max-width: 650px;
   width: 100%;
