@@ -22,7 +22,7 @@ HugoはGo製で速いらしい．最初，[Jekyll](https://jekyllrb.com/)とい�
 
 Giraffe AcademyというYouTubeチャンネルの解説がわかりやすくそれを参考に作成した．
 
-<iframe width="100%" height="385" src="https://www.youtube.com/embed/qtIqKaDlqXo?list=PLLAZ4kZ9dFpOnyRlyS-liKL5ReHDcj4G3" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen frameborder="0"></iframe>
+
 
 [Giraffe AcademyのHugo解説 playlist](https://www.youtube.com/watch?v=qtIqKaDlqXo&list=PLLAZ4kZ9dFpOnyRlyS-liKL5ReHDcj4G3)
 
@@ -267,6 +267,7 @@ GitHub Pagesには2種類のサイトの形式がある．サイトの形式に�
 ## google search console
 ## Disqusの導入
 -->
+
 ## References
 Hugoについて
 : [Giraffe AcademyのHugo解説 playlist](https://www.youtube.com/watch?v=qtIqKaDlqXo&list=PLLAZ4kZ9dFpOnyRlyS-liKL5ReHDcj4G3)
