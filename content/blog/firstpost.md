@@ -22,7 +22,8 @@ HugoはGo製で速いらしい．最初，[Jekyll](https://jekyllrb.com/)とい�
 
 Giraffe AcademyというYouTubeチャンネルの解説がわかりやすくそれを参考に作成した．
 
-<iframe width="640" height="385" src="https://www.youtube.com/embed/qtIqKaDlqXo?list=PLLAZ4kZ9dFpOnyRlyS-liKL5ReHDcj4G3" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen frameborder="0"></iframe>
+<iframe width="100%" height="385" src="https://www.youtube.com/embed/qtIqKaDlqXo?list=PLLAZ4kZ9dFpOnyRlyS-liKL5ReHDcj4G3" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen frameborder="0"></iframe>
+
 [Giraffe AcademyのHugo解説 playlist](https://www.youtube.com/watch?v=qtIqKaDlqXo&list=PLLAZ4kZ9dFpOnyRlyS-liKL5ReHDcj4G3)
 
 テーマは[mainroad](https://themes.gohugo.io/mainroad/)を利用している．
