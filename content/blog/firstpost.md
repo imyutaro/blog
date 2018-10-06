@@ -48,7 +48,7 @@ Giraffe AcademyというYouTubeチャンネルの解説がわかりやすくそ�
 ```
 数式表示は例えばこんな感じ
 $$
-\sum_{i=0}^N v_i
+\sum_{i=0}^N a_i
 $$
 
 上記の設定だと`\sum`が2回続くつまり，`\sum_{a=0}^A \sum_{b=0}^B`としたりしたらうまく表示できない．これは，`\prod`や `\int`などでも起こる． \
@@ -56,6 +56,11 @@ $$
 
 - [Setting MathJax with Hugo | Hi, I am David](https://divadnojnarg.github.io/blog/mathjax/)
 - [Supported Content Formats | Hugo](https://gohugo.io/content-management/formats/#solution)
+
+また，ベクトルのための太字は`\boldsymbol{}`を使う．
+
+- $v_i, a_i, x_i$(通常)
+- $\boldsymbol{v}_i, \boldsymbol{a}_i, \boldsymbol{x}_i$  (太字)
 
 Atomでmarkdownのプレビューが出来るようにと思って上記の設定をしたが結局`_`を入れないといけないならKaTeXを使ったほうが良いかも?\
 KaTeXならshortcodeを使ったり数式があるときだけjsファイルを読み込んだりするから良いかもしれない，localhostでプレビューする必要があるけど．．．

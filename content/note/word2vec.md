@@ -23,17 +23,39 @@ Word2vecは「周辺にある単語が似ている単語同士は意味も似て
 [Word2Vec のニューラルネットワーク学習過程を理解する · けんごのお屋敷](http://tkengo.github.io/blog/2016/05/09/understand-how-to-learn-word2vec/)
 
 以下に自分のまとめを書いていきます．
+\
+\
+\
+\
 
-## 前処理
+## 理論的な話
+---
+上記に書いたとおりword2vecはハリスの分布仮説に基づいて注目単語があったときに周辺単語がある確率(条件付き確率)を最大化するといったことをしてベクトルを作っています．具体的な数式は以下のようになっています．
+
+\begin{align}
+  P(C_t|w_t) &= \prod\_{c_i \in C_t} p(c_i|w_t) \\\\\\
+  &= p(c_1 \land c_2 \cdots \land c_n | w_t) \\\\\\
+  &= p(c_1|w_t) \times p(c_2|w_t) \times \cdots \times p(c_n|w_t) \\\\\\
+\end{align}
+
+実際は単語の共起関係に独立性は成り立たないので上記の式のようにならないのですが計算の簡略化のために一般に独立であると仮定されて計算しています．
+\
+\
+\
+\
+
+## どうモデル化するか
+---
+### 前処理
 Word2vecモデルを学習させるためには単語をone-hotベクトルというベクトルにする必要があります．このone-hotベクトルをモデルの入力にします．
 
-## Skip-gramモデル
+### Skip-gramモデル
 Skip-gramモデルは1つの単語に対して周辺の単語を予測するモデルで最大化すべき目的関数(損失関数)は以下の式\eqref{eq:maximize_func}です．
 \begin{align}
   \sum\_{t=1}^{T} \sum\_{-c \le j \le c, j\neq 0} \log p(w\_{t+j}|w_t)
   \label{eq:maximize_func}
 \end{align}
-また式\eqref{eq:maximize_func}内の条件付き確率は式\eqref{eq:conditional_probability}で表される．
+また式\eqref{eq:maximize_func}内の条件付き確率は式\eqref{eq:conditional_probability}で表されます．
 \begin{align}
   p(w\_{t+j}|w_t)=\frac{\exp \left(v_t^{\mathrm{T}}\; v\_{t+j}\right)}{\sum\_{k=1}^{|V|}\exp \left(v_t^{\mathrm{T}}\; v_k\right)}
   \label{eq:conditional_probability}
@@ -51,7 +73,7 @@ Skip-gramモデルは1つの単語に対して周辺の単語を予測するモ�
 
 {{<figure src="/img/word2vec_sikpgram.png" caption="Skip-gram model." width="40%" class="center" >}}
 
-### 順伝播の計算
+#### 順伝播の計算
 具体的な順伝播の計算を以下に書く．1単語から1単語を予測する図のようなCBOWのモデルを簡単のため考える．
 
 {{<figure src="/img/word2vec_simpleCBOW.png" caption="Simple Skip-gram model." width="50%" class="center" >}}
@@ -61,7 +83,7 @@ Skip-gramモデルは1つの単語に対して周辺の単語を予測するモ�
 
 
 
-## Negative Sampling
+### Negative Sampling
 
 ### 共起する単語と共起しない単語の変数について考える必要あり．
 $w_c$とか$w_r$とか．．．
@@ -96,8 +118,21 @@ skip-gramモデルをベースとした学習の計算をより効率的に行�
 
 $V\_{neg}$は注目する単語と共起しない単語の集合．つまりwindowサイズの外から選ばれた単語．この目的関数を最大化するということは，注目する単語$w_t$と共起する単語$w_c$についての確率は大きくし，注目する単語と共起しない単語$w_r$に対しての確率は小さくするような操作である．
 
-## 自分の考え
-word2vecはある単語のベクトルをよく共起している単語同士で近似している(Autoencoderと同じネットワーク構造のため)．そのため，よくある例の`king - man + woman = queen`
+\
+\
+\
+\
+
+## memo
+---
+word2vecはある単語のベクトルをよく共起している単語同士で近似している(Autoencoderと同じネットワーク構造のため)．そのため，よくある例の`king - man + woman = queen`ではkingとmanに共通するベクトル情報が落ち，その後womanのベクトル情報が加わるので結果的にqueenが出てきていると考えられる．
+\begin{align}
+  \boldsymbol{v}\_{man} &= \boldsymbol{a}_1 \nonumber \\\\\\
+  \boldsymbol{v}\_{woman} &= \boldsymbol{a}_2 \nonumber \\\\\\
+  \boldsymbol{v}\_{king} &= \boldsymbol{a}_1 + \boldsymbol{a}_3 + \boldsymbol{a}_4 \nonumber \\\\\\
+  \boldsymbol{v}\_{queen} &= \boldsymbol{a}_2 + \boldsymbol{a}_3 + \boldsymbol{a}_4 \nonumber
+\end{align}
+例えば，word2vecで上のような学習がされているとすると`king - man + woman = queen`というのが求められるのがわかる．(実際はこんな簡単なベクトルで表されていないはず．．．)
 
 
 ## References

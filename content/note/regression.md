@@ -17,3 +17,4 @@ small-n-large-p dataset : サンプル数(データの数(n個)が少なく，�
 
 ## References
 - [Feature Selection using LASSO](https://beta.vu.nl/nl/Images/werkstuk-fonti_tcm235-836234.pdf)
+- △[クラシックな機械学習の入門 3. 線形回帰および識別](https://www.slideshare.net/hirsoshnakagawa3/linea-r1)
