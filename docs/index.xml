@@ -21,6 +21,15 @@
     </item>
     
     <item>
+      <title>PythonのDictionary型について</title>
+      <link>https://imyutaro.github.io/blog/lang/python_dictionary/</link>
+      <pubDate>Wed, 29 Aug 2018 14:11:31 +0900</pubDate>
+      
+      <guid>https://imyutaro.github.io/blog/lang/python_dictionary/</guid>
+      <description>indexを取得するにはfor文でループを回す． 1dic = {&amp;#39;key1&amp;#39;: 110, &amp;#39;key2&amp;#39;: 270, &amp;#39;key3&amp;#39;: 350} 2 3for i, key in enumerate(dic.keys()): 4 print(i, key) # enumerateの値と辞書のkeyが出力 5 6# dictを</description>
+    </item>
+    
+    <item>
       <title>Word2vecまとめ</title>
       <link>https://imyutaro.github.io/blog/note/word2vec/</link>
       <pubDate>Mon, 20 Aug 2018 23:15:30 +0900</pubDate>

@@ -227,6 +227,7 @@ hugo gen chromastyles --style=themename > tmp.css
 コードブロックにスライドバーを表示させたかった．．．
 `style.css`のpre のところでmax-heightを決め，overflowをauto又はscrollにしたら縦方向はできたが，横方向は`white-space = pre`にしてmax-widthを決める必要があったがブラウザの大きさによってコードブロックの横幅が変わるのを考慮する方法がわからなかった．．．
 ちなみにoverflowはx,yで横方向，縦方向の挙動を変えられる．css overflowで調べると挙動の種類がわかる．
+-> .post__content preを追加したら横のスライドバーもできた．cssについて詳しくないのでおそらくだが，全体ページの中に子要素ができていてページの内容の部分だけに反映させるようにしないといけないので .post__content preを追加して子要素に対して設定を変えてやらないといけない．
 -->
 
 ### Reading timeについて
@@ -269,7 +270,24 @@ GitHub Pagesには2種類のサイトの形式がある．サイトの形式に�
 -->
 
 ## References
+Hugoについて
+: [Giraffe AcademyのHugo解説 playlist](https://www.youtube.com/watch?v=qtIqKaDlqXo&list=PLLAZ4kZ9dFpOnyRlyS-liKL5ReHDcj4G3)
 
+数式の表示
+: [Hugoで数式を導入します | しさく](http://iimuz.github.io/post/2016/11/hugotex/)
+: [Doesn't parse when there are more than one \sum or \inf in an equation · Issue #984 · mathjax/MathJax](https://github.com/mathjax/MathJax/issues/984)
+: [Setting MathJax with Hugo | Hi, I am David](https://divadnojnarg.github.io/blog/mathjax/)
+: [Using MathJax With Hugo Mainroad](https://pennbay.github.io/tech/mathjax.with.hugo/)
+
+Syntax highlight
+: [Syntax Highlighting | Hugo](https://gohugo.io/content-management/syntax-highlighting/)
+: [HugoでのシンタックスハイライトにPython Pygmentsが不要となった - SIS Lab](https://www.meganii.com/blog/2017/10/14/hugo-syntax-highlighting/)
+
+GitHub Pages
+: [Host on GitHub | Hugo](https://gohugo.io/hosting-and-deployment/hosting-on-github/)
+
+その他
+: [Hugoでブログ作成](https://tkat0.github.io/blog/writing-blog-with-hugo-1/)
 
 <!--
 listのネストについてhtmlに変換したら何故か<p>タグが入ってしまう問題

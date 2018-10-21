@@ -298,8 +298,8 @@ pre {
   max-width: 650px;
   width: 100%;*/
   /*.post__content pre に追加したらできた！*/
-  max-height: 505px;
-  overflow: auto;
+  /*max-height: 505px;
+  overflow: auto;*/
   /* ------------------- */
 }
 
@@ -686,7 +686,7 @@ select {
 .post__content pre {
   /* 下のやつを付け加えたらコードブロック内の縦横方向にスライドバーが表示された */
   white-space: pre;
-  max-width: 650px;
+  max-width: 690px;
   width: 100%;
   max-height: 505px;
   height: 100%;
