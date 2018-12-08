@@ -125,11 +125,51 @@ var navigation = responsiveNav(".menu", {
 </html>
 ```
 
-通常の`$$`で囲んだ数式には式番号は表示されない．LaTeXの書き方で`equation`か`align`で囲んだ数式にのみ式番号が表示される．
+通常の`$$`で囲んだ数式には式番号は表示されない．LaTeXの書き方で`equation`か`align`で囲んだ数式または`tag`をつけた数式にのみ式番号が表示される．
 \begin{align}
   p(w_c|w_t)=\frac{\exp \left(v_t^{\mathrm{T}}\; v_c\right)}{\sum\_{k=1}^{|V|}\exp \left(v_t^{\mathrm{T}}\; v_k\right)}
+  \label{eq:a}
 \end{align}
 式番号を表示させたくないところには`\nonumber`をつける．基本的にはLaTeXの数式の書き方だが，改行は`\`を6つ並べないといけない．
+また，数式番号にはlabelをつけることができ，例えば`\label{eq:a}`とラベルを付けた場合，参照には`eqref{eq:a}`とすれば数式番号を参照できる．
+こんな感じ→\eqref{eq:a}
+
+- [ちょこっと MathJax： インライン数式と別行立て数式 — しっぽのさきっちょ | text.Baldanders.info](http://text.baldanders.info/remark/2017/10/getting-started-mathjax-3/)
+
+数式については基本的にMathJaxの方のことなので[MathJaxのdocument](http://docs.mathjax.org/en/latest/index.html)などを参照して変更するのが良い．数式を参照する際に使う`\eqref{}`のいろやフォントの太さなどの調整は[MathJaxのTeX，LaTeXについて](http://docs.mathjax.org/en/latest/tex.html)，[How to style all links created by \eqref command · mathjax/MathJax-docs Wiki](https://github.com/mathjax/MathJax-docs/wiki/How-to-style-all-links-created-by-%5Ceqref-command)を参考に行った．
+
+最終的な`mathjax_support.html`は以下．
+```html:mathjax_support.html
+{{ if and .IsPage (eq (.Param "mathjax") true) }}
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Config({
+  // Autonumbering by mathjax
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+
+MathJax.Hub.Config({
+  // changing color all links created by \eqref command
+  // ref: https://github.com/mathjax/MathJax-docs/wiki/How-to-style-all-links-created-by-%5Ceqref-command
+  // MathJax document: http://docs.mathjax.org/en/latest/tex.html
+  "HTML-CSS": { styles: { ".MathJax a": { color: "black", "font-size": "100%", "font-weight": "normal" } } }
+});
+
+// fontfamily: "Menlo", "DejaVu Sans Mono", "Consolas", "Lucida Console", "monospace"
+</script>
+{{ end }}
+```
 
 ### Syntax highlightの設定
 syntax highlightについては以下の記事を参考に行った．
@@ -278,6 +318,7 @@ Hugoについて
 : [Doesn't parse when there are more than one \sum or \inf in an equation · Issue #984 · mathjax/MathJax](https://github.com/mathjax/MathJax/issues/984)
 : [Setting MathJax with Hugo | Hi, I am David](https://divadnojnarg.github.io/blog/mathjax/)
 : [Using MathJax With Hugo Mainroad](https://pennbay.github.io/tech/mathjax.with.hugo/)
+: [ちょこっと MathJax： インライン数式と別行立て数式 — しっぽのさきっちょ | text.Baldanders.info](http://text.baldanders.info/remark/2017/10/getting-started-mathjax-3/)
 
 Syntax highlight
 : [Syntax Highlighting | Hugo](https://gohugo.io/content-management/syntax-highlighting/)

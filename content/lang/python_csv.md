@@ -6,7 +6,7 @@ disable_comments: false # Optional, disable Disqus comments if true
 authorbox: false # Optional, enable authorbox for specific post
 toc: false # Optional, enable Table of Contents for specific post
 mathjax: true # Optional, enable MathJax for specific post
-draft: true
+draft: false
 categories:
   - "lang"
 tags:
@@ -39,6 +39,25 @@ with open("file.csv", "w") as f: # ファイルに追記したい場合は"w"の
 ```
 
 ## numpyの場合
+#### 読み込み
+```python
+import numpy as np
+
+# csvファイルの場合
+data = np.loadtxt("file.csv", delimiter=",")
+
+# tsvファイルの場合
+data = np.loadtxt("file.tsv", delimiter="\t")
+```
+
+#### 書き込み
+```python
+import numpy as np
+
+# csvファイルの保存
+np.savetxt("file.csv", x, delimiter=',')   # x is an array
+```
+
 
 ## pandasの場合
 #### 読み込み
@@ -49,6 +68,15 @@ df = pd.read_csv("file.csv")
 ```
 
 #### 書き込み
+```Python
+import pandas as pd
+
+df.to_csv("file.csv") # df is a DataFrame
+```
 
 ## References
 - [211.CSVファイルの読み込み・保存 · GitBook](http://docs.fabo.io/python/numpy/numpy012.html)
+- [numpy.loadtxt — NumPy v1.15 Manual](https://docs.scipy.org/doc/numpy-1.15.0/reference/generated/numpy.loadtxt.html)
+- [numpy.savetxt — NumPy v1.15 Manual](https://docs.scipy.org/doc/numpy-1.15.0/reference/generated/numpy.savetxt.html)
+- [PythonでCSVの読み書き - Qiita](https://qiita.com/okadate/items/c36f4eb9506b358fb608)
+- [pandasでよく使う文法まとめ - Qiita](https://qiita.com/okadate/items/7b9620a5e64b4e906c42)

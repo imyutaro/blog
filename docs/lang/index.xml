@@ -6,10 +6,19 @@
     <description>Recent content in Langs on あうとぷっと</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Wed, 29 Aug 2018 14:16:57 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 16 Sep 2018 18:50:25 +0900</lastBuildDate>
     
 	<atom:link href="https://imyutaro.github.io/blog/lang/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Pythonでのcsvの扱い方</title>
+      <link>https://imyutaro.github.io/blog/lang/python_csv/</link>
+      <pubDate>Sun, 16 Sep 2018 18:50:25 +0900</pubDate>
+      
+      <guid>https://imyutaro.github.io/blog/lang/python_csv/</guid>
+      <description>pythonでのcsvの読み込みをいつも忘れてしまうのでメモ． csv libraryの場合 読み込み 1import csv 2 3with open(&amp;#34;file.csv&amp;#34;, &amp;#34;r&amp;#34;) as f: 4 reader = csv.reader(f) 5 header = next(reader) # headerを</description>
+    </item>
     
     <item>
       <title>Python，numpyのCopyについて</title>

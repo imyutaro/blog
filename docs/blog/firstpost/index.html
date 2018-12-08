@@ -6,27 +6,12 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Hugo&#43;GitHub Pagesでblog作成</title>
 	<meta name="description" content="">
-	<meta name="generator" content="Hugo 0.46" />
+	<meta name="generator" content="Hugo 0.50" />
 	<meta property="og:title" content="Hugo&#43;GitHub Pagesでblog作成" />
 <meta property="og:description" content="Blogをはじめた 自分が勉強していることをoutputとしてblogにまとめることにした．このblogはHugoというGoで作られた静的サイ" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://imyutaro.github.io/blog/blog/firstpost/" />
-
-
-
-<meta property="article:published_time" content="2018-08-10T21:16:24&#43;09:00"/>
-
+<meta property="og:url" content="https://imyutaro.github.io/blog/blog/firstpost/" /><meta property="article:published_time" content="2018-08-10T21:16:24&#43;09:00"/>
 <meta property="article:modified_time" content="2018-08-10T21:16:24&#43;09:00"/>
-
-
-
-
-
-
-
-
-
-
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Hugo&#43;GitHub Pagesでblog作成"/>
@@ -66,7 +51,7 @@
 	<svg class="icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
 	<span class="meta-categories__list"><a class="meta-categories__link" href="https://imyutaro.github.io/blog/categories/blog" rel="category">BLOG</a></span>
 </span>
-  　~ 7 minute read ~
+  　~ 8 minute read ~
 </div>
 		</header>
 <div class="post__toc toc">
@@ -200,12 +185,51 @@ KaTeXならshortcodeを使ったり数式があるときだけjsファイルを�
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span>{{- partial &#34;mathjax_support.html&#34; . -}}
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span>&lt;/<span style="color:#062873;font-weight:bold">body</span>&gt;
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span>&lt;/<span style="color:#062873;font-weight:bold">html</span>&gt;</code></pre></div>
-<p>通常の<code>$$</code>で囲んだ数式には式番号は表示されない．LaTeXの書き方で<code>equation</code>か<code>align</code>で囲んだ数式にのみ式番号が表示される．
+<p>通常の<code>$$</code>で囲んだ数式には式番号は表示されない．LaTeXの書き方で<code>equation</code>か<code>align</code>で囲んだ数式または<code>tag</code>をつけた数式にのみ式番号が表示される．
 \begin{align}
   p(w_c|w_t)=\frac{\exp \left(v_t^{\mathrm{T}}\; v_c\right)}{\sum_{k=1}^{|V|}\exp \left(v_t^{\mathrm{T}}\; v_k\right)}
+  \label{eq:a}
 \end{align}
-式番号を表示させたくないところには<code>\nonumber</code>をつける．基本的にはLaTeXの数式の書き方だが，改行は<code>\</code>を6つ並べないといけない．</p>
+式番号を表示させたくないところには<code>\nonumber</code>をつける．基本的にはLaTeXの数式の書き方だが，改行は<code>\</code>を6つ並べないといけない．
+また，数式番号にはlabelをつけることができ，例えば<code>\label{eq:a}</code>とラベルを付けた場合，参照には<code>eqref{eq:a}</code>とすれば数式番号を参照できる．
+こんな感じ→\eqref{eq:a}</p>
 
+<ul>
+<li><a href="http://text.baldanders.info/remark/2017/10/getting-started-mathjax-3/">ちょこっと MathJax： インライン数式と別行立て数式 — しっぽのさきっちょ | text.Baldanders.info</a></li>
+</ul>
+
+<p>数式については基本的にMathJaxの方のことなので<a href="http://docs.mathjax.org/en/latest/index.html">MathJaxのdocument</a>などを参照して変更するのが良い．数式を参照する際に使う<code>\eqref{}</code>のいろやフォントの太さなどの調整は<a href="http://docs.mathjax.org/en/latest/tex.html">MathJaxのTeX，LaTeXについて</a>，<a href="https://github.com/mathjax/MathJax-docs/wiki/How-to-style-all-links-created-by-%5Ceqref-command">How to style all links created by \eqref command · mathjax/MathJax-docs Wiki</a>を参考に行った．</p>
+
+<p>最終的な<code>mathjax_support.html</code>は以下．</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html:mathjax_support.html" data-lang="html:mathjax_support.html"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span>{{ if and .IsPage (eq (.Param &#34;mathjax&#34;) true) }}
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span>&lt;<span style="color:#062873;font-weight:bold">script</span> <span style="color:#4070a0">type</span><span style="color:#666">=</span><span style="color:#4070a0">&#34;text/x-mathjax-config&#34;</span>&gt;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span>MathJax.Hub.Config({
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span>  tex2jax<span style="color:#666">:</span> {
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span>    inlineMath<span style="color:#666">:</span> [[<span style="color:#4070a0">&#39;$&#39;</span>,<span style="color:#4070a0">&#39;$&#39;</span>], [<span style="color:#4070a0">&#39;\\(&#39;</span>,<span style="color:#4070a0">&#39;\\)&#39;</span>]],
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span>    displayMath<span style="color:#666">:</span> [[<span style="color:#4070a0">&#39;$$&#39;</span>,<span style="color:#4070a0">&#39;$$&#39;</span>], [<span style="color:#4070a0">&#39;\[&#39;</span>,<span style="color:#4070a0">&#39;\]&#39;</span>]],
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span>    processEscapes<span style="color:#666">:</span> <span style="color:#007020;font-weight:bold">true</span>,
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span>    processEnvironments<span style="color:#666">:</span> <span style="color:#007020;font-weight:bold">true</span>,
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span>    skipTags<span style="color:#666">:</span> [<span style="color:#4070a0">&#39;script&#39;</span>, <span style="color:#4070a0">&#39;noscript&#39;</span>, <span style="color:#4070a0">&#39;style&#39;</span>, <span style="color:#4070a0">&#39;textarea&#39;</span>, <span style="color:#4070a0">&#39;pre&#39;</span>,<span style="color:#4070a0">&#39;code&#39;</span>],
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span>    TeX<span style="color:#666">:</span> { equationNumbers<span style="color:#666">:</span> { autoNumber<span style="color:#666">:</span> <span style="color:#4070a0">&#34;AMS&#34;</span> },
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span>         extensions<span style="color:#666">:</span> [<span style="color:#4070a0">&#34;AMSmath.js&#34;</span>, <span style="color:#4070a0">&#34;AMSsymbols.js&#34;</span>] }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span>  }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span>});
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span>MathJax.Hub.Config({
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span>  <span style="color:#60a0b0;font-style:italic">// Autonumbering by mathjax
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span style="color:#60a0b0;font-style:italic"></span>  TeX<span style="color:#666">:</span> { equationNumbers<span style="color:#666">:</span> { autoNumber<span style="color:#666">:</span> <span style="color:#4070a0">&#34;AMS&#34;</span> } }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span>});
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span>MathJax.Hub.Config({
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21</span>  <span style="color:#60a0b0;font-style:italic">// changing color all links created by \eqref command
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22</span><span style="color:#60a0b0;font-style:italic"></span>  <span style="color:#60a0b0;font-style:italic">// ref: https://github.com/mathjax/MathJax-docs/wiki/How-to-style-all-links-created-by-%5Ceqref-command
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23</span><span style="color:#60a0b0;font-style:italic"></span>  <span style="color:#60a0b0;font-style:italic">// MathJax document: http://docs.mathjax.org/en/latest/tex.html
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24</span><span style="color:#60a0b0;font-style:italic"></span>  <span style="color:#4070a0">&#34;HTML-CSS&#34;</span><span style="color:#666">:</span> { styles<span style="color:#666">:</span> { <span style="color:#4070a0">&#34;.MathJax a&#34;</span><span style="color:#666">:</span> { color<span style="color:#666">:</span> <span style="color:#4070a0">&#34;black&#34;</span>, <span style="color:#4070a0">&#34;font-size&#34;</span><span style="color:#666">:</span> <span style="color:#4070a0">&#34;100%&#34;</span>, <span style="color:#4070a0">&#34;font-weight&#34;</span><span style="color:#666">:</span> <span style="color:#4070a0">&#34;normal&#34;</span> } } }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25</span>});
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27</span><span style="color:#60a0b0;font-style:italic">// fontfamily: &#34;Menlo&#34;, &#34;DejaVu Sans Mono&#34;, &#34;Consolas&#34;, &#34;Lucida Console&#34;, &#34;monospace&#34;
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28</span><span style="color:#60a0b0;font-style:italic"></span>&lt;/<span style="color:#062873;font-weight:bold">script</span>&gt;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29</span>{{ end }}</code></pre></div>
 <h3 id="syntax-highlightの設定">Syntax highlightの設定</h3>
 
 <p>syntax highlightについては以下の記事を参考に行った．</p>
@@ -368,6 +392,7 @@ GitHub Pagesには2種類のサイトの形式がある．サイトの形式に�
 <dd><a href="https://github.com/mathjax/MathJax/issues/984">Doesn&rsquo;t parse when there are more than one \sum or \inf in an equation · Issue #984 · mathjax/MathJax</a></dd>
 <dd><a href="https://divadnojnarg.github.io/blog/mathjax/">Setting MathJax with Hugo | Hi, I am David</a></dd>
 <dd><a href="https://pennbay.github.io/tech/mathjax.with.hugo/">Using MathJax With Hugo Mainroad</a></dd>
+<dd><a href="http://text.baldanders.info/remark/2017/10/getting-started-mathjax-3/">ちょこっと MathJax： インライン数式と別行立て数式 — しっぽのさきっちょ | text.Baldanders.info</a></dd>
 <dt>Syntax highlight</dt>
 <dd><a href="https://gohugo.io/content-management/syntax-highlighting/">Syntax Highlighting | Hugo</a></dd>
 <dd><a href="https://www.meganii.com/blog/2017/10/14/hugo-syntax-highlighting/">HugoでのシンタックスハイライトにPython Pygmentsが不要となった - SIS Lab</a></dd>
@@ -402,7 +427,7 @@ https://aakira.app/blog/2018/08/share/
 	
 <section class="comments">
 	<div id="disqus_thread"></div>
-<script>
+<script type="application/javascript">
     var disqus_config = function () {
     
     
@@ -443,6 +468,7 @@ https://aakira.app/blog/2018/08/share/
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="https://imyutaro.github.io/blog/lang/python_csv/">Pythonでのcsvの扱い方</a></li>
 			<li class="widget__item"><a class="widget__link" href="https://imyutaro.github.io/blog/lang/python_copy/">Python，numpyのCopyについて</a></li>
 			<li class="widget__item"><a class="widget__link" href="https://imyutaro.github.io/blog/lang/python_dictionary/">PythonのDictionary型について</a></li>
 			<li class="widget__item"><a class="widget__link" href="https://imyutaro.github.io/blog/note/word2vec/">Word2vecまとめ</a></li>
@@ -486,7 +512,7 @@ https://aakira.app/blog/2018/08/share/
 	<div class="widget__content">
 		<a class="widget-taglist__link widget__link btn" href="https://imyutaro.github.io/blog/tags/nlp" title="Nlp">Nlp (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="https://imyutaro.github.io/blog/tags/others" title="Others">Others (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="https://imyutaro.github.io/blog/tags/python" title="Python">Python (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="https://imyutaro.github.io/blog/tags/python" title="Python">Python (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="https://imyutaro.github.io/blog/tags/%e6%a9%9f%e6%a2%b0%e5%ad%a6%e7%bf%92" title="機械学習">機械学習 (1)</a>
 	</div>
 </div>
@@ -525,6 +551,15 @@ MathJax.Hub.Config({
   // Autonumbering by mathjax
   TeX: { equationNumbers: { autoNumber: "AMS" } }
 });
+
+MathJax.Hub.Config({
+  // changing color all links created by \eqref command
+  // ref: https://github.com/mathjax/MathJax-docs/wiki/How-to-style-all-links-created-by-%5Ceqref-command
+  // MathJax document: http://docs.mathjax.org/en/latest/tex.html
+  "HTML-CSS": { styles: { ".MathJax a": { color: "black", "font-size": "90%", "font-weight": "normal" } } }
+});
+
+// fontfamily: "Menlo", "DejaVu Sans Mono", "Consolas", "Lucida Console", "monospace"
 </script>
 
 </body>

@@ -620,14 +620,17 @@ select {
 
 .post__content a,
 .warning a {
-	font-weight: 700;
-  color: #3399FF;
+	/*font-weight: 700;*/
+  /*color: #3399FF;*/
+  color: #000;
+  text-decoration: underline;
 }
 
 .post__content a:hover,
 .warning a:hover {
   color: #3399FF;
-  text-decoration: underline;
+  text-decoration: none;
+  /*text-decoration: underline;*/
 }
 
 .post__content .alignnone {
@@ -789,12 +792,14 @@ select {
 .toc__menu a {
 	display: block;
 	padding: 5px 10px;
-	color: #3399FF;
+	/*color: #3399FF;*/
+  color: #000;
 	border-bottom: 1px solid #ebebeb;
 }
 
 .toc__menu a:hover {
 	text-decoration: underline;
+  color: #3399FF;
 }
 
 /* Author Box */
