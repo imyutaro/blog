@@ -33,7 +33,7 @@ Word2vecは「周辺にある単語が似ている単語同士は意味も似て
 上記に書いたとおりword2vecはハリスの分布仮説に基づいて注目単語があったときに周辺単語がある確率(条件付き確率)を最大化するといったことをしてベクトルを作っています．具体的な数式は以下のようになっています．
 
 \begin{align}
-  P(C_t|w_t) &= \prod\_{c_i \in C_t} p(c_i|w_t) \\\\\\
+  P(C_t|w_t) &= \prod\_{c_i \in C_t} p(c_i|w_t) \label{eq:based_equation} \\\\\\
   &= p(c_1 \land c_2 \cdots \land c_n | w_t) \nonumber \\\\\\
   &= p(c_1|w_t) \times p(c_2|w_t) \times \cdots \times p(c_n|w_t) \nonumber \\\\\\
 \end{align}
@@ -48,8 +48,8 @@ Word2vecは「周辺にある単語が似ている単語同士は意味も似て
 ## どうモデル化するか
 ------
 ### 前処理
-Word2vecモデルを学習させるためには単語をone-hotベクトルというベクトルにする必要があります．このone-hotベクトルをモデルの入力にします．
-例えば．．．
+Word2vecモデルを学習させるためには単語をone-hotベクトルというベクトルにする必要があります．このone-hotベクトルをモデルの入力にします．\
+例えば下記のように，
 
 ### Skip-gramモデル
 Skip-gramモデルは1つの単語に対して周辺の単語を予測するモデルで最大化すべき目的関数(損失関数)は以下の式\eqref{eq:maximize_func}です．式\eqref{eq:based_equation}
@@ -64,10 +64,10 @@ Skip-gramモデルは1つの単語に対して周辺の単語を予測するモ�
 \end{align}
 <!--式を見やすくするため式\eqref{eq:maximize_func}の$w\_{t+j}$を式\eqref{eq:conditional_probability}ではの$w_c$にしています．-->
 
-- **変数について**\
+- **変数について** \
 式\eqref{eq:maximize_func}，式\eqref{eq:conditional_probability}中の変数について，$c$はwindowサイズ．注目する単語から$2\times c$個の周辺単語を学習の際に用います．$w_t$は注目している単語，$w\_{t+j}$は$w_t$の周辺単語．つまり，注目している単語$w_t$の前後$c$個ずつ，合計$2\times c$個の単語が周辺単語$w\_{t+j}$となります．$v_t$は単語$w_t$を表す特徴ベクトル．$v\_{t+j}$は周辺単語$w\_{t+j}$を表す特徴ベクトル．$V$は全単語の集合．$|V|$はすべての単語数，$T$は文書中の単語の総数(重複含む)を表します．この変数の中の単語の特徴ベクトルを学習で求めます．また，この特徴ベクトルのことを「**分散表現**」や「**埋め込みベクトル(Embedding vector)**」といったりします．
 
-- **式の意味**\
+- **式の意味** \
 上記の式\eqref{eq:maximize_func}は文章中に単語$w_t$があったとき単語$w\_{t+j}$($w_t$の前後の単語)が出現する確率を表しています．つまり，文章中に並んで出現しているので「$w_t$が出現したときに$w\_{t+j}$が出現する確率」(条件付き確率)を大きくしたいというのが目的です．式\eqref{eq:conditional_probability}の分母は全単語のベクトル$v_k$と注目単語のベクトル$v_t$の内積をeの肩に乗せたもの．分子は周辺単語のベクトル$v\_{t+j}$と注目単語のベクトル$v_t$の内積をeの肩に乗せたもの．これは注目単語が出現したときに共起した単語の単語ベクトル(周辺単語ベクトル)が出現する確率(条件付き確率)を表しています．式\eqref{eq:maximize_func}を最大化するというのは共起している単語のベクトル同士の内積の値を高くするということです．
 
 この計算は大変なので階層的softmaxや[Negative sampling](https://imyutaro.github.io/blog/note/word2vec/#negative-sampling)によって学習する際の計算コストを削減する．\
@@ -140,11 +140,11 @@ $V\_{neg}$は注目する単語と共起しない単語の集合．つまりwind
 
 
 ## References
-- [Distributed Representations of Words and Phrases and their Compositionality](http://arxiv.org/abs/1402.3722)\
-- [Yoav Goldberg and Omer Levy, word2vec Explained: deriving Mikolov et al.'s negative-sampling word-embedding method](http://arxiv.org/abs/1402.3722)\
-- [The backpropagation algorithm for Word2Vec | Marginalia](http://www.claudiobellei.com/2018/01/06/backprop-word2vec/)\
-- [A Word2Vec Keras tutorial - Adventures in Machine Learning](http://adventuresinmachinelearning.com/word2vec-keras-tutorial/)\
-- [David Meyer, How exactly does word2vec work?](http://www.1-4-5.net/~dmm/ml/how_does_word2vec_work.pdf)\
-- [word2vec（Skip-Gram Model）の仕組みを恐らく日本一簡潔にまとめてみたつもり - これで無理なら諦めて！世界一やさしいデータ分析教室](http://www.randpy.tokyo/entry/word2vec_skip_gram_model)\
-- [Word2Vec のニューラルネットワーク学習過程を理解する · けんごのお屋敷](http://tkengo.github.io/blog/2016/05/09/understand-how-to-learn-word2vec/)\
-- [word2vecのソースを読んでみた](https://qiita.com/mash0510/items/347964f3eb2e080ea7a4#%EF%BC%92%EF%BC%93-%E9%AB%98%E9%80%9F%E5%8C%96%E3%81%AE%E6%89%8B%E6%B3%95negative-sampling)\
+- [Distributed Representations of Words and Phrases and their Compositionality](http://arxiv.org/abs/1402.3722) \
+- [Yoav Goldberg and Omer Levy, word2vec Explained: deriving Mikolov et al.'s negative-sampling word-embedding method](http://arxiv.org/abs/1402.3722) \
+- [The backpropagation algorithm for Word2Vec | Marginalia](http://www.claudiobellei.com/2018/01/06/backprop-word2vec/) \
+- [A Word2Vec Keras tutorial - Adventures in Machine Learning](http://adventuresinmachinelearning.com/word2vec-keras-tutorial/) \
+- [David Meyer, How exactly does word2vec work?](http://www.1-4-5.net/~dmm/ml/how_does_word2vec_work.pdf) \
+- [word2vec（Skip-Gram Model）の仕組みを恐らく日本一簡潔にまとめてみたつもり - これで無理なら諦めて！世界一やさしいデータ分析教室](http://www.randpy.tokyo/entry/word2vec_skip_gram_model) \
+- [Word2Vec のニューラルネットワーク学習過程を理解する · けんごのお屋敷](http://tkengo.github.io/blog/2016/05/09/understand-how-to-learn-word2vec/) \
+- [word2vecのソースを読んでみた](https://qiita.com/mash0510/items/347964f3eb2e080ea7a4#%EF%BC%92%EF%BC%93-%E9%AB%98%E9%80%9F%E5%8C%96%E3%81%AE%E6%89%8B%E6%B3%95negative-sampling) \

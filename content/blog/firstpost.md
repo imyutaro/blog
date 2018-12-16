@@ -136,7 +136,7 @@ var navigation = responsiveNav(".menu", {
 
 - [ちょこっと MathJax： インライン数式と別行立て数式 — しっぽのさきっちょ | text.Baldanders.info](http://text.baldanders.info/remark/2017/10/getting-started-mathjax-3/)
 
-数式については基本的にMathJaxの方のことなので[MathJaxのdocument](http://docs.mathjax.org/en/latest/index.html)などを参照して変更するのが良い．数式を参照する際に使う`\eqref{}`のいろやフォントの太さなどの調整は[MathJaxのTeX，LaTeXについて](http://docs.mathjax.org/en/latest/tex.html)，[How to style all links created by \eqref command · mathjax/MathJax-docs Wiki](https://github.com/mathjax/MathJax-docs/wiki/How-to-style-all-links-created-by-%5Ceqref-command)を参考に行った．
+数式については基本的にMathJaxの方のことなので[MathJaxのdocument](http://docs.mathjax.org/en/latest/index.html)などを参照して変更するのが良い．数式を参照する際に使う`\eqref{}`の色やフォントの太さなどの調整は[MathJaxのTeX，LaTeXについて](http://docs.mathjax.org/en/latest/tex.html)，[How to style all links created by \eqref command · mathjax/MathJax-docs Wiki](https://github.com/mathjax/MathJax-docs/wiki/How-to-style-all-links-created-by-%5Ceqref-command)を参考に行った．
 
 最終的な`mathjax_support.html`は以下．
 ```html:mathjax_support.html

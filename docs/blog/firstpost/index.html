@@ -198,7 +198,7 @@ KaTeXならshortcodeを使ったり数式があるときだけjsファイルを�
 <li><a href="http://text.baldanders.info/remark/2017/10/getting-started-mathjax-3/">ちょこっと MathJax： インライン数式と別行立て数式 — しっぽのさきっちょ | text.Baldanders.info</a></li>
 </ul>
 
-<p>数式については基本的にMathJaxの方のことなので<a href="http://docs.mathjax.org/en/latest/index.html">MathJaxのdocument</a>などを参照して変更するのが良い．数式を参照する際に使う<code>\eqref{}</code>のいろやフォントの太さなどの調整は<a href="http://docs.mathjax.org/en/latest/tex.html">MathJaxのTeX，LaTeXについて</a>，<a href="https://github.com/mathjax/MathJax-docs/wiki/How-to-style-all-links-created-by-%5Ceqref-command">How to style all links created by \eqref command · mathjax/MathJax-docs Wiki</a>を参考に行った．</p>
+<p>数式については基本的にMathJaxの方のことなので<a href="http://docs.mathjax.org/en/latest/index.html">MathJaxのdocument</a>などを参照して変更するのが良い．数式を参照する際に使う<code>\eqref{}</code>の色やフォントの太さなどの調整は<a href="http://docs.mathjax.org/en/latest/tex.html">MathJaxのTeX，LaTeXについて</a>，<a href="https://github.com/mathjax/MathJax-docs/wiki/How-to-style-all-links-created-by-%5Ceqref-command">How to style all links created by \eqref command · mathjax/MathJax-docs Wiki</a>を参考に行った．</p>
 
 <p>最終的な<code>mathjax_support.html</code>は以下．</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html:mathjax_support.html" data-lang="html:mathjax_support.html"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span>{{ if and .IsPage (eq (.Param &#34;mathjax&#34;) true) }}
@@ -556,7 +556,8 @@ MathJax.Hub.Config({
   // changing color all links created by \eqref command
   // ref: https://github.com/mathjax/MathJax-docs/wiki/How-to-style-all-links-created-by-%5Ceqref-command
   // MathJax document: http://docs.mathjax.org/en/latest/tex.html
-  "HTML-CSS": { styles: { ".MathJax a": { color: "black", "font-size": "90%", "font-weight": "normal" } } }
+  "HTML-CSS": { styles: { ".MathJax a": { color: "black", "font-size": "90%", "font-weight": "normal", "overflow-x": "scroll"} } }
+  // to resize equations: https://stackoverflow.com/questions/29728119/resize-mathjax-on-mobile
 });
 
 // fontfamily: "Menlo", "DejaVu Sans Mono", "Consolas", "Lucida Console", "monospace"
